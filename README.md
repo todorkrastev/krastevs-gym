@@ -1,2 +1,2 @@
-# krastev-gym
+# krastevs-gym
 In development
