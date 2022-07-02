@@ -100,12 +100,7 @@ body {
 #hero .hero__form .form__btn {
   /* padding: 0.75rem; */
   text-transform: capitalize;
-}
-
-#hero .hero__form .form__btn i {
-  font-size: 29px;
-  vertical-align: middle;
-  margin-left: 4px;
+  font-size: 1rem;
 }
 
 #hero .form__suffix {
@@ -119,6 +114,7 @@ body {
   text-align: center;
 }
 .info .info__title {
+  color: #ffdd4d;
   margin-bottom: 1rem;
 }
 .info .info__description {
