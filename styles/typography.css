@@ -5,7 +5,7 @@ html {
 }
 
 * {
-  color: #fff;
+  color: var(--color-white);
 }
 
 h1,
