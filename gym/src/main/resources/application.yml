@@ -12,12 +12,9 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
-      #devtools:
-      #restart:
-      #enabled: true
-    #sql:
-      #init:
-        #mode: always
+        #devtools:
+        #restart:
+        #enabled: true
   jpa:
     # Choose either MySQL 8 or MySQL 5 below
     # For MySQL 8
@@ -39,8 +36,11 @@ spring:
       #default:
       #admin:
       #password:
-  #Cloudinary Properties
-  #cloudinary:
-  #api-key:
-  #api-secret:
-  #cloud-name:
+      #Cloudinary Properties
+      #cloudinary:
+      #api-key:
+      #api-secret:
+      #cloud-name:
+      #sql:
+      #init:
+      #mode: always
