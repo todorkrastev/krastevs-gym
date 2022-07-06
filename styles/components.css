@@ -4,10 +4,11 @@
   padding: 0.25rem 0.75rem;
   background-color: transparent;
   border: 2px solid transparent;
+  text-decoration: none;
 }
 
 .btn--primary {
-  background-color: #ffdd4d;
+  background-color: var(--color-primary);
   color: var(--color-dark-gray);
 }
 
