@@ -248,30 +248,6 @@ body {
     background-color: transparent;
   }
 
-  .header .btn--primary:hover {
-    background-color: transparent;
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-    cursor: pointer;
-    transition: color 250ms ease-in-out;
-  }
-
-  #hero .hero__form .form__btn:hover {
-    background-color: transparent;
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-    cursor: pointer;
-    transition: color 250ms ease-in-out;
-  }
-
-  #hero .member__btn:hover {
-    background-color: transparent;
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-    cursor: pointer;
-    transition: color 250ms ease-in-out;
-  }
-
   .info {
     justify-content: space-between;
     padding: 3rem 0;
@@ -304,7 +280,6 @@ body {
     width: 45%;
   }
 
-
   .footer .navi {
     justify-content: space-between;
     max-width: 1200px;
@@ -322,7 +297,7 @@ body {
 
 @media screen and (min-width: 1024px) {
   html {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 
   .info .navi {
@@ -346,7 +321,6 @@ body {
     font-size: 1.5rem;
   }
 
-
   .footer .info .socials a {
     font-size: 1.5rem;
   }
@@ -357,6 +331,30 @@ body {
 }
 
 @media screen and (min-width: 1200px) {
+  .header .btn--primary:hover {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    cursor: pointer;
+    transition: color 250ms ease-in-out;
+  }
+
+  #hero .hero__form .form__btn:hover {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    cursor: pointer;
+    transition: color 250ms ease-in-out;
+  }
+
+  #hero .member__btn:hover {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    cursor: pointer;
+    transition: color 250ms ease-in-out;
+  }
+
   .footer .info .socials a i:hover {
     color: var(--color-primary);
     cursor: pointer;
