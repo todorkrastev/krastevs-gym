@@ -50,27 +50,17 @@
     <section id="hero">
       <img src="/imgs/hero.jpg" class="img--bg" alt="Background poster" />
 
-      <h1 class="hero__form--add-exercise__title">Add an Exercise</h1>
+      <h1 class="hero__form--add-course__title">Add a Class</h1>
 
-      <form method="POST" class="hero__form--add-exercise">
-        <input name="name" class="hero__form--add-exercise__field" placeholder="Exercise Name" type="text" minlength="5"
+      <form method="POST" class="hero__form--add-course">
+        <input name="name" class="hero__form--add-course__field" placeholder="Class Name" type="text" minlength="5"
           maxlength="50" required value="">
-        <select name="categoryName" class="hero__form--add-exercise__field">
-          <option class="hero__form--add-exercise__drop" value="">--Please choose a category--</option>
-          <option class="hero__form--add-exercise__drop" value="">ABS</option>
-          <option class="hero__form--add-exercise__drop" value="">ARMS</option>
-          <option class="hero__form--add-exercise__drop" value="">BACK</option>
-          <option class="hero__form--add-exercise__drop" value="">CHEST</option>
-          <option class="hero__form--add-exercise__drop" value="">LEGS</option>
-          <option class="hero__form--add-exercise__drop" value="">SHOULDERS</option>
-        </select>
-        <select name="categoryLevel" class="hero__form--add-exercise__field">
-          <option class="hero__form--add-exercise__drop" value="">--Please choose a level--</option>
-          <option class="hero__form--add-exercise__drop" value="accessories">BEGINNER</option>
-          <option class="hero__form--add-exercise__drop" value="clothing">INTERMEDIATE</option>
-          <option class="hero__form--add-exercise__drop" value="nutrition">ADVANCED</option>
-        </select>
-        <button type="submit" class="hero__add-exercise--submit btn">Submit</button>
+        <input name="trainer" class="hero__form--add-course__field" placeholder="Room" type="text" minlength="5"
+          maxlength="255" required value="">
+        <input class="hero__form--add-course__field" type="datetime-local" id="meeting-time" name="time"
+          value="2022-07-07T09:00" min="2022-07-09T00:00">
+
+        <button type="submit" class="hero__add-course--submit btn">Submit</button>
       </form>
 
     </section>

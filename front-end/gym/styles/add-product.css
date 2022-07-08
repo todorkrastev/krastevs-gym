@@ -9,20 +9,17 @@
     z-index: 3;
 }
 
-#hero .hero__form--add-product__field {
+#hero .hero__form--add-product {
     width: 100%;
-    color: var(--color-black);
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0.5rem auto;
-    padding: 0.5rem;
+    margin-bottom: 1rem;
     position: relative;
     z-index: 3;
 }
 
-
-#hero .hero__form--add-product {
+#hero .hero__form--add-product .hero__form--add-product__field {
     width: 100%;
     margin-bottom: 1rem;
     color: var(--color-black);
@@ -34,7 +31,7 @@
     color: var(--color-black);
 }
 
-#hero .hero__register--submit {
+#hero .hero__add-product--submit {
     /* padding: 0.75rem; */
     background-color: var(--color-primary);
     color: var(--color-dark-gray);

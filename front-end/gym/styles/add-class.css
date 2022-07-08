@@ -3,13 +3,13 @@
 @import url("./typography.css");
 @import url("./components.css");
 
-#hero .hero__form--add-exercise__title {
+#hero .hero__form--add-course__title {
     margin-bottom: 1rem;
     position: relative;
     z-index: 3;
 }
 
-#hero .hero__form--add-exercise {
+#hero .hero__form--add-course {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
     z-index: 3;
 }
 
-#hero .hero__form--add-exercise .hero__form--add-exercise__field {
+#hero .hero__form--add-course .hero__form--add-course__field {
     width: 100%;
     margin-bottom: 1rem;
     color: var(--color-black);
@@ -27,11 +27,11 @@
 }
 
 
-#hero .hero__form--add-exercise__drop {
+#hero .hero__form--add-course__drop {
     color: var(--color-black);
 }
 
-#hero .hero__add-exercise--submit {
+#hero .hero__add-course--submit {
     /* padding: 0.75rem; */
     background-color: var(--color-primary);
     color: var(--color-dark-gray);
@@ -45,24 +45,24 @@
 }
 
 @media screen and (min-width: 768px) {
-    #hero .hero__form--add-exercise .hero__form--add-exercise__field {
+    #hero .hero__form--add-course .hero__form--add-course__field {
         width: 80%;
     }
 }
 
 @media screen and (min-width: 1024px) {
-    #hero .hero__form--add-exercise .hero__form--add-exercise__field {
+    #hero .hero__form--add-course .hero__form--add-course__field {
         width: 60%;
     }
 }
 
 @media screen and (min-width: 1200px) {
-    #hero .hero__form--add-exercise .hero__form--add-exercise__field {
+    #hero .hero__form--add-course .hero__form--add-course__field {
         width: 30%;
     }
 
 
-    #hero .hero__form--add-exercise .hero__add-exercise--submit:hover {
+    #hero .hero__form--add-course .hero__add-course--submit:hover {
         background-color: transparent;
         color: var(--color-primary);
         border: 2px solid var(--color-primary);
@@ -72,13 +72,13 @@
 }
 
 @media screen and (min-width: 1600px) {
-    #hero .hero__form--add-exercise .hero__form--add-exercise__field {
+    #hero .hero__form--add-course .hero__form--add-course__field {
         width: 25%;
     }
 }
 
 @media screen and (min-width: 1800px) {
-    #hero .hero__form--add-exercise .hero__form--add-exercise__field {
+    #hero .hero__form--add-course .hero__form--add-course__field {
         width: 20%;
     }
 }
