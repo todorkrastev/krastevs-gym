@@ -37,22 +37,54 @@
     border: 2px solid transparent;
 }
 
-#hero .hero--login--signin {
+#hero .hero__login--register {
     position: relative;
     z-index: 3;
+    font-size: 0.75rem;
 }
 
-#hero .hero--login--signin {
-    font-size: 0.75rem;
+#hero .hero__login--register a {
+    color: var(--color-primary);
 }
 
 
 @media screen and (min-width: 640px) {}
 
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+    #hero .hero__form--login .hero__form--login__field {
+        width: 80%;
+    }
+}
 
-@media screen and (min-width: 1200px) {}
+@media screen and (min-width: 1024px) {
+    #hero .hero__form--login .hero__form--login__field {
+        width: 60%;
+    }
+}
 
-@media screen and (min-width: 1600px) {}
+@media screen and (min-width: 1200px) {
+    #hero .hero__form--login .hero__form--login__field {
+        width: 30%;
+    }
 
-@media screen and (min-width: 1800px) {}
+    
+  #hero .hero__form--login .hero__login--submit:hover {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    cursor: pointer;
+    transition: color 250ms ease-in-out;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+    #hero .hero__form--login .hero__form--login__field {
+        width: 25%;
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    #hero .hero__form--login .hero__form--login__field {
+        width: 20%;
+    }
+}
