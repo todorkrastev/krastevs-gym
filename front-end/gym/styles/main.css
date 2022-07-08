@@ -5,6 +5,7 @@
 @import url("./login.css");
 @import url("./register.css");
 @import url("./add-product.css");
+@import url("./add-exercise.css");
 
 :root {
   --color-primary: #ffdd4d;

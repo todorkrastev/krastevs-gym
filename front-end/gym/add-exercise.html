@@ -50,22 +50,29 @@
     <section id="hero">
       <img src="/imgs/hero.jpg" class="img--bg" alt="Background poster" />
 
-      <h1 class="hero__form--add-product__title">Add a Product</h1>
+      <h1 class="hero__form--add-exercise__title">Add an Exercise</h1>
 
-      <form method="POST" class="hero__form--add-product">
-        <input name="name" class="hero__form--add-product__field" placeholder="Name" type="email" minlength="5"
+      <form method="POST" class="hero__form--add-exercise">
+        <input name="name" class="hero__form--add-exercise__field" placeholder="Exercise Name" type="text" minlength="5"
           maxlength="50" required value="">
-        <input name="price" class="hero__form--add-product__field" placeholder="Price" type="number" min="0.01"
-          max="10000" step="1" required value="">
-        <input name="price" class="hero__form--add-product__field" placeholder="Description" type="text" minlength="1"
+          <input name="name" class="hero__form--add-exercise__field" placeholder="Instructions" type="text" minlength="5"
           maxlength="255" required value="">
-        <select name="categoryName" class="hero__form--add-product__field">
-          <option class="hero__form--add-product__drop" value="">--Please choose a category--</option>
-          <option class="hero__form--add-product__drop" value="">ACCESSORIES</option>
-          <option class="hero__form--add-product__drop" value="">CLOTHING</option>
-          <option class="hero__form--add-product__drop" value="">NUTRITION</option>
+        <select name="categoryName" class="hero__form--add-exercise__field">
+          <option class="hero__form--add-exercise__drop" value="">--Please choose a category--</option>
+          <option class="hero__form--add-exercise__drop" value="">ABS</option>
+          <option class="hero__form--add-exercise__drop" value="">ARMS</option>
+          <option class="hero__form--add-exercise__drop" value="">BACK</option>
+          <option class="hero__form--add-exercise__drop" value="">CHEST</option>
+          <option class="hero__form--add-exercise__drop" value="">LEGS</option>
+          <option class="hero__form--add-exercise__drop" value="">SHOULDERS</option>
         </select>
-        <button type="submit" class="hero__add-product--submit btn">Submit</button>
+        <select name="categoryLevel" class="hero__form--add-exercise__field">
+          <option class="hero__form--add-exercise__drop" value="">--Please choose a level--</option>
+          <option class="hero__form--add-exercise__drop" value="accessories">BEGINNER</option>
+          <option class="hero__form--add-exercise__drop" value="clothing">INTERMEDIATE</option>
+          <option class="hero__form--add-exercise__drop" value="nutrition">ADVANCED</option>
+        </select>
+        <button type="submit" class="hero__add-exercise--submit btn">Submit</button>
       </form>
 
     </section>
