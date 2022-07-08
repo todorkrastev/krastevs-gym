@@ -3,6 +3,7 @@
 @import url("./typography.css");
 @import url("./components.css");
 @import url("./login.css");
+@import url("./register.css");
 
 :root {
   --color-primary: #ffdd4d;
