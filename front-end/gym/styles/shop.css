@@ -2,83 +2,8 @@
 @import url("./reset.css");
 @import url("./typography.css");
 @import url("./components.css");
-@import url("./login.css");
-@import url("./register.css");
-@import url("./add-product.css");
-@import url("./add-exercise.css");
-@import url("./add-class.css");
-@import url("./add-activity.css");
-@import url("./shop.css");
 
-:root {
-  --color-primary: #ffdd4d;
-  --color-white: #fff;
-  --color-dark-gray: #222222;
-  --color-black: black;
-  /*
-  --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    */
-}
-
-body {
-  background-color: var(--color-black);
-}
-
-/* Header */
-
-.header {
-  background-color: rgba(0, 0, 0, 0.95);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  z-index: 1000;
-}
-
-.header .logo {
-  width: 30px;
-}
-
-.header .basket i {
-  color: var(--color-white);
-}
-
-/* Hero */
-
-#hero {
-  min-height: 100vh;
-  position: relative;
-  padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-#hero::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  background: linear-gradient(180deg,
-      rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0) 50%,
-      rgba(0, 0, 0, 1) 100%);
-}
-
-#hero .img--bg {
+#hero .img--bg--shop {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -86,48 +11,37 @@ body {
   top: 0;
   left: 0;
   z-index: 1;
+  opacity: 0.2;
 }
 
-#hero .hero__title,
-#hero .hero__subtitle {
-  margin-bottom: 1rem;
+#hero .hero__products {
   position: relative;
   z-index: 3;
 }
 
-#hero .hero__subtitle {
-  font-size: 1.25rem;
+
+#hero .hero__title__products {
+  color: var(--color-primary);
+  font-weight: 700;
+  padding: 0.75rem;
 }
 
-#hero .hero__form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-  position: relative;
-  z-index: 3;
+#hero .hero__products__subtitles {
+  padding: 0.5rem;
 }
 
-#hero .hero__form .form__input {
-  width: 100%;
-  margin-bottom: 1rem;
+#hero .hero__products__subtitle {
+  margin-bottom: 0.5rem;
 }
 
-#hero .hero__form .form__btn {
-  /* padding: 0.75rem; */
-  background-color: var(--color-primary);
-  color: var(--color-dark-gray);
-  padding: 0.25rem 0.75rem;
-  text-transform: capitalize;
-  font-size: 1rem;
-  border: 2px solid transparent;
+#hero .hero__products__subtitle:last-child {
+  margin-bottom: 0;
 }
 
-#hero .form__suffix {
-  position: relative;
-  z-index: 3;
-}
+
+
+
+
 
 #hero .member__btn {
   background-color: var(--color-primary);
@@ -142,7 +56,6 @@ body {
 }
 
 /* Basic information section layout */
-
 .info .info__title,
 .info .info__description {
   text-align: center;
@@ -154,7 +67,6 @@ body {
 }
 
 .info__buttons {
-  margin: 1rem 0;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -164,16 +76,9 @@ body {
   gap: 13px;
 }
 
-.info__buttons .btn {
-  background-color: var(--color-black);
-  border: 2px solid var(--color-primary);
-}
-
 .info .info__poster {
   width: 100%;
 }
-
-/* Footer */
 
 .footer {
   padding: 3rem 1rem;
@@ -230,11 +135,6 @@ body {
   font-size: 0.625rem;
 }
 
-@media screen and (min-width: 375px) {
-  .btn {
-    font-size: 11px;
-  }
-}
 
 @media screen and (min-width: 640px) {
   .header .btn {
@@ -283,6 +183,7 @@ body {
 }
 
 @media screen and (min-width: 768px) {
+
   .header {
     padding: 0.625rem 0.875rem;
   }
@@ -327,7 +228,6 @@ body {
     font-size: 12px;
   }
 
-
   .info .info__poster {
     width: 45%;
   }
@@ -352,6 +252,19 @@ body {
 }
 
 @media screen and (min-width: 1024px) {
+
+  #hero .hero__title__products {
+    text-align: left;
+  }
+
+  #hero .hero__products__subtitles {
+    text-align: left;
+  }
+
+  #hero .hero__products__subtitles {
+    width: 45%;
+  }
+
   html {
     font-size: 1.125rem;
   }
@@ -416,21 +329,9 @@ body {
     transition: color 250ms ease-in-out;
   }
 
-  .header .basket i:hover {
-    color: var(--color-black);
-    transition: color 250ms ease-in-out;
-  }
-
-  .header .basket:hover {
-    background-color: var(--color-primary);
-    cursor: pointer;
-    transition: color 250ms ease-in-out;
-  }
-
   .info__buttons .btn:hover {
-    background-color: var(--color-primary);
+    background-color: transparent;
     border: 2px solid var(--color-primary);
-    color: var(--color-black);
     cursor: pointer;
     transition: color 250ms ease-in-out;
   }
