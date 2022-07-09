@@ -38,147 +38,62 @@
   margin-bottom: 0;
 }
 
-
-
-
-
-
-#hero .member__btn {
-  background-color: var(--color-primary);
-  color: var(--color-dark-gray);
-  margin-top: 2rem;
-  margin-bottom: -7rem;
-  text-transform: capitalize;
-  font-size: 1rem;
-  padding: 0.5rem 2rem;
-  border: 2px solid transparent;
-  z-index: 3;
-}
-
 /* Basic information section layout */
-.info .info__title,
-.info .info__description {
-  text-align: center;
+
+.shop .shop__wrapper {
+  margin: 2rem 0;
+  justify-content: center;
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-content: center;
 }
 
-.info .info__title {
+.shop .shop__card {
+  margin-bottom: 1rem;
+}
+
+.shop .shop__title,
+.shop .shop__description,
+.shop .shop__price,
+.shop .shop__name {
+  text-align: center;
+  padding: 1rem;
+}
+
+.shop .shop__title {
   color: var(--color-primary);
   margin-bottom: 1rem;
 }
 
-.info__buttons {
+.shop__buttons {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: space-around;
-  flex-direction: row;
   padding: 0.25rem;
   gap: 13px;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: center;
+  align-items: center;
 }
 
-.info .info__poster {
+.shop__buttons .btn {
+  font-size: 0.75rem;
+}
+
+.shop .shop__poster {
   width: 100%;
 }
-
-.footer {
-  padding: 3rem 1rem;
-  background-color: var(--color-gray-dark);
-}
-
-.footer .navi .navi-group {
-  margin-bottom: 2rem;
-}
-
-.footer .navi .navi-group .navi-group__title {
-  color: var(--color-primary);
-  font-size: 1rem;
-  margin-bottom: 0.75rem;
-}
-
-.footer .navi .navi-group ul li {
-  margin-bottom: 0.5rem;
-  font-size: 0.625rem;
-}
-
-.footer .navi .navi-group ul li a {
-  text-transform: uppercase;
-  color: var(--color-white);
-  text-decoration: none;
-}
-
-.footer .navi .navi-group ul li p {
-  line-height: 1rem;
-}
-
-.footer .info {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-}
-
-.footer .info .socials {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1.25rem;
-}
-
-.footer .info .socials a,
-.footer .info p {
-  color: var(--color-white);
-  text-align: center;
-}
-
-.footer .info .socials a {
-  font-size: 1.250rem;
-}
-
-.footer .info .rights {
-  font-size: 0.625rem;
-}
-
 
 @media screen and (min-width: 640px) {
   .header .btn {
     font-size: 11px;
   }
 
-  #hero .hero__form {
-    width: 50%;
-    flex-direction: row;
-    align-items: stretch;
-  }
-
-  #hero .hero__form .form__input {
-    margin-bottom: 0;
-    width: calc(100% - 155px);
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  #hero .hero__form .form__btn {
-    width: 155px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .info__buttons .btn {
+  .shop__buttons .btn {
     font-size: 11px;
-  }
-
-  .footer {
-    padding: 3rem 0;
-    width: 95%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .footer .navi {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-  }
-
-  .footer .info {
-    grid-column: 1 / span 2;
   }
 }
 
@@ -196,59 +111,53 @@
     font-size: 12px;
   }
 
-  .info {
-    justify-content: space-between;
+  .shop {
+    justify-content: center;
     padding: 3rem 0;
     width: 95%;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
+    align-content: center;
     align-items: center;
   }
 
-  .info:nth-of-type(2n + 1) {
+  .shop:nth-of-type(2n + 1) {
     flex-direction: row-reverse;
   }
 
-  .info .info__wrapper,
-  .info .info__poster {
-    width: 50%;
+  .shop .shop__wrapper {
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 15px;
   }
 
-  .info .info__title,
-  .info .info__description {
-    text-align: left;
+  .shop .shop__wrapper,
+  .shop .shop__poster {
+    width: 95%;
   }
 
-  .info .info__title {
+  .shop .shop__title,
+  .shop .shop__description {
+    text-align: center;
+  }
+
+  .shop .shop__title {
     font-size: 1.75rem;
   }
 
-  .info__buttons .btn {
+  .shop__buttons .btn {
     font-size: 12px;
   }
 
-  .info .info__poster {
-    width: 45%;
+  .shop .shop__poster {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
-
-  .footer .navi {
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 90%;
-    padding: 0;
-  }
-
-  .footer .info {
-    padding: 0;
-    width: 70%;
-  }
-
-  .footer .info .socials {
-    margin-bottom: 2rem;
-  }
-
 }
 
 @media screen and (min-width: 1024px) {
@@ -273,37 +182,21 @@
     font-size: 15px;
   }
 
-  .info .navi {
+  .shop .navi {
     width: 80%;
     padding: 4rem 0;
   }
 
-  .info .info__poster {
-    width: 45%;
-  }
 
-  .info .info__wrapper {
-    width: 50%;
-  }
 
-  .info .info__title {
+
+
+  .shop .shop__title {
     font-size: 2rem;
   }
 
-  .info__buttons .btn {
+  .shop__buttons .btn {
     font-size: 15px;
-  }
-
-  .footer .info {
-    font-size: 1.5rem;
-  }
-
-  .footer .info .socials a {
-    font-size: 1.5rem;
-  }
-
-  .footer .info .rights {
-    font-size: 0.625rem;
   }
 }
 
@@ -329,7 +222,7 @@
     transition: color 250ms ease-in-out;
   }
 
-  .info__buttons .btn:hover {
+  .shop__buttons .btn:hover {
     background-color: transparent;
     border: 2px solid var(--color-primary);
     cursor: pointer;
@@ -351,18 +244,6 @@
     cursor: pointer;
     transition: color 250ms ease-in-out;
   }
-
-  .footer .navi .navi-group__subtitle:hover {
-    color: var(--color-primary);
-    cursor: pointer;
-    transition: color 250ms ease-in-out;
-  }
-
-  .footer .info .socials a i:hover {
-    color: var(--color-primary);
-    cursor: pointer;
-    transition: color 250ms ease-in-out;
-  }
 }
 
 @media screen and (min-width: 1600px) {
@@ -374,7 +255,7 @@
     font-size: 16px;
   }
 
-  .info__buttons .btn {
+  .shop__buttons .btn {
     font-size: 16px;
   }
 }
@@ -388,7 +269,7 @@
     font-size: 18px;
   }
 
-  .info__buttons .btn {
+  .shop__buttons .btn {
     font-size: 18px;
   }
 }
