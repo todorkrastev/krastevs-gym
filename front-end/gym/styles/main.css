@@ -149,6 +149,16 @@ body {
   margin-bottom: 2rem;
 }
 
+.info__buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: space-around;
+  flex-direction: row;
+  padding: 0.25rem;
+  gap: 13px;
+}
+
 .info .info__poster {
   width: 100%;
 }
@@ -233,6 +243,10 @@ body {
     border-bottom-left-radius: 0;
   }
 
+  .info__buttons .btn {
+    font-size: 11px;
+  }
+
   .footer {
     padding: 3rem 0;
     width: 95%;
@@ -292,6 +306,10 @@ body {
     font-size: 1.75rem;
   }
 
+  .info__buttons .btn {
+    font-size: 12px;
+  }
+
   .info .info__poster {
     width: 45%;
   }
@@ -341,6 +359,10 @@ body {
     font-size: 2rem;
   }
 
+  .info__buttons .btn {
+    font-size: 15px;
+  }
+
   .footer .info {
     font-size: 1.5rem;
   }
@@ -370,6 +392,13 @@ body {
   }
 
   .header .btn:hover {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    cursor: pointer;
+    transition: color 250ms ease-in-out;
+  }
+
+  .info__buttons .btn:hover {
     background-color: transparent;
     border: 2px solid var(--color-primary);
     cursor: pointer;
@@ -413,6 +442,10 @@ body {
   .header .btn {
     font-size: 16px;
   }
+
+  .info__buttons .btn {
+    font-size: 16px;
+  }
 }
 
 @media screen and (min-width: 1800px) {
@@ -421,6 +454,10 @@ body {
   }
 
   .header .btn {
+    font-size: 18px;
+  }
+
+  .info__buttons .btn {
     font-size: 18px;
   }
 }
