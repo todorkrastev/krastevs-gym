@@ -3,7 +3,7 @@
 @import url("./typography.css");
 @import url("./components.css");
 
-#hero .img--bg--exercise {
+#hero .img--bg--abs {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -14,31 +14,29 @@
     opacity: 0.5;
 }
 
-#hero .hero__exercises {
+#hero .hero__abs {
     position: relative;
     z-index: 3;
 }
 
 
-#hero .hero__title__exercises {
+#hero .hero__title__abs {
     color: var(--color-primary);
     font-weight: 700;
     padding: 0.75rem;
 }
 
-#hero .hero__exercises__subtitles {
-    padding: 0.5rem;
+#hero .hero__title__abs:nth-child(3n+2) {
+    color: var(--color-white);
 }
 
-#hero .hero__exercises__subtitle {
-    margin-bottom: 0.5rem;
+.abs {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 12px;
 }
 
-#hero .hero__exercises__subtitle:last-child {
-    margin-bottom: 0;
-}
-
-.exercise__wrapper {
+.abs__wrapper {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -48,53 +46,40 @@
     text-decoration: none;
 }
 
-.exercise__poster {
+.abs__poster {
     width: 100%;
     border-radius: 5px;
 }
 
-.exercise__title {
+.abs__title {
     font-size: 1.4rem;
-    margin-top: 1rem;
     font-weight: 700;
 }
 
 @media screen and (min-width: 768px) {
-    .exercises__container {
+    .abs {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
     }
 
 }
 
 @media screen and (min-width: 1024px) {
-    #hero .hero__title__exercises {
+    #hero .hero__title__abs {
         text-align: start;
     }
 
-    #hero .hero__exercises {
+    #hero .hero__abs {
         width: 80%;
     }
-
-    #hero .hero__exercises__subtitles {
-        text-align: left;
-    }
-
-    #hero .hero__exercises__subtitles {
-        width: 50%;
-    }
-
 }
 
 @media screen and (min-width: 1200px) {
-
-    #hero .hero__exercises {
+    #hero .hero__abs {
         max-width: 1200px;
-        margin: 0 auto;
     }
 
-    .exercises__container {
+    .abs {
         max-width: 1200px;
         margin: 0 auto;
     }

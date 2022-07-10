@@ -84,7 +84,9 @@
     color: var(--color-black);
 }
 
-table, th, td {
+.table,
+.th,
+.td {
     border: 2px solid var(--color-white);
 }
 
@@ -140,12 +142,17 @@ table, th, td {
         color: var(--color-black);
         transition: color 250ms ease-in-out;
     }
+
+    .hero__courses {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 }
 
 
 
 @media screen and (min-width: 1440px) {
-    
+
     .course__table {
         max-width: 1200px;
     }

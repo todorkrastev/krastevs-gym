@@ -11,6 +11,7 @@
 @import url("./shop.css");
 @import url("./course.css");
 @import url("./exercise.css");
+@import url("./abs.css");
 
 :root {
   --color-primary: #ffdd4d;
