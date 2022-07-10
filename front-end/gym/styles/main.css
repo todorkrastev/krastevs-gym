@@ -13,6 +13,7 @@
 @import url("./exercise.css");
 @import url("./abs.css");
 @import url("./arms.css");
+@import url("./back.css");
 
 :root {
   --color-primary: #ffdd4d;
