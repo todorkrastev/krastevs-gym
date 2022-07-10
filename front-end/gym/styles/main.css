@@ -10,6 +10,7 @@
 @import url("./add-activity.css");
 @import url("./shop.css");
 @import url("./course.css");
+@import url("./exercise.css");
 
 :root {
   --color-primary: #ffdd4d;
