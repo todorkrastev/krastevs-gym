@@ -6,12 +6,14 @@
 @import url("./register.css");
 @import url("./add-product.css");
 @import url("./add-exercise.css");
-@import url("./add-class.css");
+@import url("./add-course.css");
 @import url("./add-activity.css");
 @import url("./shop.css");
+@import url("./course.css");
 
 :root {
   --color-primary: #ffdd4d;
+  --color-light-yellow: #ffec9c;
   --color-white: #fff;
   --color-dark-gray: #222222;
   --color-black: black;
