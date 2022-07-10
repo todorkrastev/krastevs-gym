@@ -1,0 +1,86 @@
+@import url("https://use.fontawesome.com/releases/v5.10.2/css/all.css");
+@import url("./reset.css");
+@import url("./typography.css");
+@import url("./components.css");
+
+#hero .img--bg--legs {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+#hero .hero__legs {
+    position: relative;
+    z-index: 3;
+}
+
+
+#hero .hero__title__legs {
+    color: var(--color-primary);
+    font-weight: 700;
+    padding: 0.75rem;
+}
+
+#hero .hero__title__legs:nth-child(3n+2) {
+    color: var(--color-white);
+}
+
+.legs {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 12px;
+}
+
+.legs__wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.legs__poster {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.legs__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+@media screen and (min-width: 768px) {
+    .legs {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    #hero .hero__title__legs {
+        text-align: start;
+    }
+
+    #hero .hero__legs {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #hero .hero__legs {
+        max-width: 1200px;
+    }
+
+    .legs {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
