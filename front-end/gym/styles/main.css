@@ -16,6 +16,7 @@
 @import url("./back.css");
 @import url("./chest.css");
 @import url("./legs.css");
+@import url("./shoulders.css");
 
 :root {
   --color-primary: #ffdd4d;
