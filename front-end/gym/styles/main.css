@@ -164,11 +164,6 @@ body {
   gap: 13px;
 }
 
-.info__buttons .btn {
-  background-color: var(--color-black);
-  border: 2px solid var(--color-primary);
-}
-
 .info .info__poster {
   width: 100%;
 }
@@ -260,7 +255,9 @@ body {
     border-bottom-left-radius: 0;
   }
 
-  .info__buttons .btn {
+  .edit,
+  .delete,
+  .add {
     font-size: 11px;
   }
 
@@ -323,7 +320,9 @@ body {
     font-size: 1.75rem;
   }
 
-  .info__buttons .btn {
+  .add,
+  .edit,
+  .delete {
     font-size: 12px;
   }
 
@@ -377,7 +376,9 @@ body {
     font-size: 2rem;
   }
 
-  .info__buttons .btn {
+  .add,
+  .edit,
+  .delete {
     font-size: 15px;
   }
 
@@ -427,7 +428,9 @@ body {
     transition: color 250ms ease-in-out;
   }
 
-  .info__buttons .btn:hover {
+  .add:hover,
+  .edit:hover,
+  .delete:hover {
     background-color: var(--color-primary);
     border: 2px solid var(--color-primary);
     color: var(--color-black);
@@ -473,7 +476,9 @@ body {
     font-size: 16px;
   }
 
-  .info__buttons .btn {
+  .add,
+  .edit,
+  .delete {
     font-size: 16px;
   }
 }
@@ -487,7 +492,9 @@ body {
     font-size: 18px;
   }
 
-  .info__buttons .btn {
+  .add,
+  .edit,
+  .delete {
     font-size: 18px;
   }
 }

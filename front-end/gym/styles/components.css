@@ -8,6 +8,18 @@
   color: var(--color-primary);
 }
 
+.add,
+.edit,
+.delete {
+  padding: 2px 4px;
+  text-decoration: none;
+  font-size: 9px;
+  padding: 0.25rem 0.5rem;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
 /* Input --------- */
 .input {
   border: none;
