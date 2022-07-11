@@ -1,6 +1,7 @@
-import { html } from "../lib.js";
+import { getAllActivities } from "../api/data.js";
+import { html, until } from "../lib.js";
 
-const homeTemplate = () => html`
+const homeTemplate = (activitiesPromise) => html`
   <section id="hero">
     <img src="/imgs/hero.jpg" class="img--bg" alt="Background poster" />
 
@@ -26,13 +27,14 @@ const homeTemplate = () => html`
 
   <div class="divider"></div>
 
+  ${until(activitiesPromise, html`<p class="spinner">Loading &hellip;</p>`)}
+`;
+
+const activityPreviewCard = (activity) => html`
   <section class="info section">
     <div class="info__wrapper">
-      <h2 class="info__title">Free Weights</h2>
-      <p class="info__description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe
-        deleniti ipsa dignissimos totam.
-      </p>
+      <h2 class="info__title">${activity.title}<</h2>
+      <p class="info__description">${activity.description}</p>
 
       <div class="info__buttons">
         <button class="info__button edit">Edit</button>
@@ -47,5 +49,11 @@ const homeTemplate = () => html`
 `;
 
 export function homePage(ctx) {
-  ctx.render(homeTemplate());
+  ctx.render(homeTemplate(loadActivities()));
+}
+
+async function loadActivities() {
+  const activities = await getAllActivities();
+
+  return activities.map(activityPreviewCard);
 }
