@@ -14,7 +14,7 @@
   <meta name="msapplication-TileColor" content="#ffc40d">
   <meta name="theme-color" content="#ffffff">
   <title>Krastev's Gym</title>
-  <!-- <script src="/src/app.js" type="module"></script> -->
+  <script type="module" src="src/app.js"></script>
 </head>
 
 <body>
@@ -23,27 +23,28 @@
       <img src="/imgs/logo.png" class="logo" alt="Logo" />
     </a>
     <nav class="navigation">
-      <!-- <div id="guest">
-        <a href="/register" class="btn">Sign in</a>
-        <a href="/login" class="btn">Log in</a>
-      </div> -->
+
+      <div id="guest">
+        <a href="/login" class="btn">Log In</a>
+        <a href="/basket" class="basket btn"><i class="fas fa-shopping-basket"></i></a>
+      </div>
 
       <!--<div id="user">
-        <a href="/classes" class="btn">Classes</a>
+        <a href="/courses" class="btn">Courses</a>
         <a href="/exercises" class="btn">Exercises</a>
-        <a href="/products" class="btn">Products</a>
+        <a href="/shop" class="btn">Shop</a>
         <a href="javascript:void(0)" class="btn">Logout</a>
         <a href="/basket" class="basket btn"><i class="fas fa-shopping-basket"></i></a>
       </div> -->
 
-      <div id="admin">
-        <a href="/activities" class="btn">Activities</a>
+      <!-- <div id="admin">
+        <a href="/add-activity" class="btn">Activities</a>
         <a href="/applicants" class="btn">Applicants</a>
-        <a href="/classes" class="btn">Classes</a>
-        <a href="/exercises" class="btn">Exercises</a>
-        <a href="/products" class="btn">Products</a>
+        <a href="/add-course" class="btn">Courses</a>
+        <a href="/add-exercise" class="btn">Exercises</a>
+        <a href="/add-product" class="btn">Products</a>
         <a href="javascript:void(0)" class="btn">Logout</a>
-      </div>
+      </div> -->
 
       <!-- <div id="admin" class="navigation__container">
         <ul class="navigation__list">
@@ -71,249 +72,7 @@
     </nav>
   </header>
 
-  <main>
-    <section id="hero">
-      <img src="/imgs/hero.jpg" class="img--bg" alt="Background poster" />
-
-      <h1 class="hero__title">NO EXCUSES!</h1>
-      <h2 class="hero__subtitle">GET FIT NOW</h2>
-
-      <form class="hero__form" action="">
-        <input type="email" name="email" class="form__input input" placeholder="Email address" minlength="5"
-          maxlength="50" />
-        <button href="/" class="form__btn btn">
-          Free-trial day
-        </button>
-      </form>
-
-      <p class="form__suffix">
-        Only new members are eligible for this offer.
-      </p>
-
-      <a href="" class="member__btn btn">
-        Become a member
-      </a>
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="weights" class="info section">
-      <div class="info__wrapper">
-        <h2 class="info__title">Free Weights</h2>
-        <p class="info__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe deleniti ipsa dignissimos totam.
-        </p>
-
-        <div class="info__buttons">
-          <button class="info__button edit">Edit</button>
-          <button class="info__button delete">Delete</button>
-        </div>
-      </div>
-
-      <img class="info__poster" src="/imgs/weights.jpg" alt="Section poster" />
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="machines" class="info section">
-      <div class="info__wrapper">
-        <h2 class="info__title">Machines</h2>
-        <p class="info__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe deleniti ipsa dignissimos totam.
-        </p>
-
-        <div class="info__buttons">
-          <button class="info__button edit">Edit</button>
-          <button class="info__button delete">Delete</button>
-        </div>
-      </div>
-
-      <img class="info__poster" src="/imgs/machines.jpg" alt="Section poster" />
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="cardio" class="info section">
-      <div class="info__wrapper">
-        <h2 class="info__title">Cardio Area</h2>
-        <p class="info__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe deleniti ipsa dignissimos totam.
-        </p>
-
-        <div class="info__buttons">
-          <button class="info__button edit">Edit</button>
-          <button class="info__button delete">Delete</button>
-        </div>
-      </div>
-
-      <img class="info__poster" src="/imgs/cardio.jpg" alt="Section poster" />
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="box" class="info section">
-      <div class="info__wrapper">
-        <h2 class="info__title">Box</h2>
-        <p class="info__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe deleniti ipsa dignissimos totam.
-        </p>
-
-        <div class="info__buttons">
-          <button class="info__button edit">Edit</button>
-          <button class="info__button delete">Delete</button>
-        </div>
-      </div>
-
-      <img class="info__poster" src="/imgs/boxing.jpg" alt="Section poster" />
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="coaching" class="info section">
-      <div class="info__wrapper">
-        <h2 class="info__title">PT & Coaching</h2>
-        <p class="info__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe deleniti ipsa dignissimos totam.
-        </p>
-
-        <div class="info__buttons">
-          <button class="info__button edit">Edit</button>
-          <button class="info__button delete">Delete</button>
-        </div>
-      </div>
-
-      <img class="info__poster" src="/imgs/coaching.jpg" alt="Section poster" />
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="yoga" class="info section">
-      <div class="info__wrapper">
-        <h2 class="info__title">Yoga</h2>
-        <p class="info__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe deleniti ipsa dignissimos totam.
-        </p>
-
-        <div class="info__buttons">
-          <button class="info__button edit">Edit</button>
-          <button class="info__button delete">Delete</button>
-        </div>
-      </div>
-
-      <img class="info__poster" src="/imgs/yoga.jpg" alt="Section poster" />
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="classes" class="info section">
-      <div class="info__wrapper">
-        <h2 class="info__title">Classes & More</h2>
-        <p class="info__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe deleniti ipsa dignissimos totam.
-        </p>
-
-        <div class="info__buttons">
-          <button class="info__button edit">Edit</button>
-          <button class="info__button delete">Delete</button>
-        </div>
-      </div>
-
-      <img class="info__poster" src="/imgs/classes.jpg" alt="Section poster" />
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="posing" class="info section">
-      <div class="info__wrapper">
-        <h2 class="info__title">Posing Room</h2>
-        <p class="info__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe deleniti ipsa dignissimos totam.
-        </p>
-
-        <div class="info__buttons">
-          <button class="info__button edit">Edit</button>
-          <button class="info__button delete">Delete</button>
-        </div>
-
-      </div>
-
-      <img class="info__poster" src="/imgs/posing.jpg" alt="Section poster" />
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="sauna" class="info section">
-      <div class="info__wrapper">
-        <h2 class="info__title">Sauna & Recovery</h2>
-        <p class="info__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe deleniti ipsa dignissimos totam.
-        </p>
-
-        <div class="info__buttons">
-          <button class="info__button edit">Edit</button>
-          <button class="info__button delete">Delete</button>
-        </div>
-      </div>
-
-      <img class="info__poster" src="/imgs/sauna.jpg" alt="Section poster" />
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="pool" class="info section">
-      <div class="info__wrapper">
-        <h2 class="info__title">Swimming Pool</h2>
-        <p class="info__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe deleniti ipsa dignissimos totam.
-        </p>
-
-        <div class="info__buttons">
-          <button class="info__button edit">Edit</button>
-          <button class="info__button delete">Delete</button>
-        </div>
-      </div>
-
-      <img class="info__poster" src="/imgs/pool.jpg" alt="Section poster" />
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="nutrition" class="info section">
-      <div class="info__wrapper">
-        <h2 class="info__title">Krastev's Gym Nutrition</h2>
-        <p class="info__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe deleniti ipsa dignissimos totam.
-        </p>
-
-        <div class="info__buttons">
-          <button class="info__button edit">Edit</button>
-          <button class="info__button delete">Delete</button>
-        </div>
-      </div>
-
-      <img class="info__poster" src="/imgs/nutrition.jpg" alt="Section poster" />
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="shop" class="info section">
-      <div class="info__wrapper">
-        <h2 class="info__title">Krastev's Gym Shop</h2>
-        <p class="info__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil saepe deleniti ipsa dignissimos totam.
-        </p>
-
-        <div class="info__buttons">
-          <button class="info__button edit">Edit</button>
-          <button class="info__button delete">Delete</button>
-        </div>
-      </div>
-
-      <img class="info__poster" src="/imgs/shop.jpg" alt="Section poster" />
-    </section>
-
-    <div class="divider"></div>
-
+  <main id="root">
   </main>
 
   <footer class="footer">
@@ -394,7 +153,7 @@
     </div>
   </footer>
 
-  <script src="/js/index.js"></script>
+  <!--<script src="/js/index.js"></script> -->
 </body>
 
 </html>
