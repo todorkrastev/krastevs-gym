@@ -21,7 +21,7 @@ const homeTemplate = () => html`
 
     <p class="form__suffix">Only new members are eligible for this offer.</p>
 
-    <a href="" class="member__btn btn"> Become a member </a>
+    <a href="/register" class="member__btn btn"> Become a member </a>
   </section>
 
   <div class="divider"></div>

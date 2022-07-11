@@ -1,11 +1,12 @@
 import { render, page } from "./lib.js";
 import { homePage } from "./view/home.js";
+import { registerPage } from "./view/register.js";
 
 const root = document.querySelector("#root");
 
 page(decorateContext);
 page("/", homePage);
-page("/register", () => console.log("register page"));
+page("/register", registerPage);
 page("/login", () => console.log("login page"));
 page("/basket", () => console.log("basket page"));
 
