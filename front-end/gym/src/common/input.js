@@ -1,12 +1,24 @@
-import { html } from "../lib.js";
+import { html, classMap } from "../lib.js";
 
-export const input = (label, type, value, hasError) => html`
-  <label for=${label}></label>
+// may be the code below will not work properly
+//  <label for=${label}></label>
+// check when the back-end server is ready to use
+
+export const input = (
+  label,
+  clazz,
+  type,
+  name,
+  placeholder,
+  value = "",
+  hasError
+) => html`
+  <label for=${label} class=${classMap({ error: hasError })}></label>
   <input
-    class="hero__form--register__field"
+    class=${clazz}
     type=${type}
-    name="username"
-    placeholder="Username"
-    .value=${values.username}
+    name=${name}
+    placeholder=${placeholder}
+    .value=${value.username}
   />
 `;

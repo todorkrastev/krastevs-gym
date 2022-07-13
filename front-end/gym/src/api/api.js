@@ -30,7 +30,7 @@ async function request(url, options) {
 function createOptions(method = "get", data) {
   const options = {
     method,
-    headers: {}
+    headers: {},
   };
 
   if (data != undefined) {
@@ -62,21 +62,22 @@ export async function del(url) {
   return request(url, createOptions("delete"));
 }
 
-export async function login(email, password) {
-  const result = await post("/users/login", { email, password });
+export async function login(username, password) {
+  const result = await post("/users/login", { username, password });
 
   const userData = {
-    email: result.email,
+    username: result.username,
     id: result._id,
     token: result.accessToken,
   };
   setUserData(userData);
 }
 
-export async function register(email, password) {
-  const result = await post("/users/register", { email, password });
+export async function register(username, email, password) {
+  const result = await post("/users/register", { username, email, password });
 
   const userData = {
+    username: result.username,
     email: result.email,
     id: result._id,
     token: result.accessToken,
@@ -85,6 +86,6 @@ export async function register(email, password) {
 }
 
 export async function logout() {
+  get("/users/logout");
   clearUserData();
-  await get("/users/logout");
 }

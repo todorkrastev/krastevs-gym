@@ -29,6 +29,16 @@
   border-radius: 2px;
 }
 
+.error {
+  /* border-radius: red; */
+  border-radius: var(--color-red);
+}
+
+.error--msg {
+  color: var(--color-white);
+  font-weight: 900;
+}
+
 /* Divider --------- */
 .divider {
   background-color: var(--color-dark-gray);

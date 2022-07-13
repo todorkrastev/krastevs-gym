@@ -5,8 +5,10 @@ const loginTemplate = () => html`
   <section id="hero">
     <img src="/imgs/hero.jpg" class="img--bg" alt="Background poster" />
 
-    <form @submit=${onSubmit} class="hero__form--login">
+    <form @submit=${(onSubmit, errorMsg, username)} class="hero__form--login">
       <h1 class="hero__form--login__title">Sign In</h1>
+
+      ${errorMsg ? html`<p class="error--msg">${errorMsg}</p>` : null}
 
       <label for="username"></label>
       <input
@@ -14,7 +16,7 @@ const loginTemplate = () => html`
         type="text"
         name="username"
         placeholder="Username"
-        value=""
+        .values=${username}
       />
 
       <label for="password"></label>
@@ -23,7 +25,6 @@ const loginTemplate = () => html`
         type="password"
         name="password"
         placeholder="Password"
-        value=""
       />
 
       <button type="submit" class="hero__login--submit btn">Submit</button>
@@ -37,14 +38,29 @@ const loginTemplate = () => html`
 `;
 
 export function loginPage(ctx) {
-  ctx.render(
-    loginTemplate(createSubmitHandler(onSubmit, "username", "password"))
-  );
+  update();
+
+  function update(errorMsg = "", username = "") {
+    ctx.render(
+      loginTemplate(
+        createSubmitHandler(onSubmit, "username", "password"),
+        errorMsg,
+        username
+      )
+    );
+  }
 
   async function onSubmit(data) {
-    await login(data.email, data.password);
+    try {
+      await login(data.username, data.password);
 
-    ctx.updateUserNav();
-    ctx.page.redirect("/");
+      ctx.updateUserNav();
+      ctx.page.redirect("/");
+    } catch (err) {
+      // The errors that are sent from the server do not have field error, the errors have field message
+      // The procedure for the form is vice versa
+      const message = err.message || err.error.message;
+      update(message, data.username);
+    }
   }
 }
