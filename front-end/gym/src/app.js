@@ -1,6 +1,7 @@
 import { logout } from "./api/api.js";
 import { render, page } from "./lib.js";
 import { getUserData } from "./util.js";
+import { addActivityPage } from "./view/add-activity.js";
 import { homePage } from "./view/home.js";
 import { loginPage } from "./view/login.js";
 import { registerPage } from "./view/register.js";
@@ -12,6 +13,7 @@ page(decorateContext);
 page("/", homePage);
 page("/register", registerPage);
 page("/login", loginPage);
+page("/add-activity", addActivityPage);
 page("/basket", () => console.log("basket page"));
 
 updateUserNav();

@@ -12,13 +12,28 @@ export const input = (
   placeholder,
   value = "",
   hasError
-) => html`
-  <label for=${label} class=${classMap({ error: hasError })}></label>
-  <input
-    class=${clazz}
-    type=${type}
-    name=${name}
-    placeholder=${placeholder}
-    .value=${value.username}
-  />
-`;
+) => {
+  if (type == "textarea") {
+    return html`
+    <label for=${label} class=${classMap({ error: hasError })}></label>
+      <textarea
+        class=${clazz}
+        type=${type}
+        name=${name}
+        placeholder=${placeholder}
+        rows="3"
+        .value=${value.username}
+      ></textarea>`;
+  } else {
+    return html`
+      <label for=${label} class=${classMap({ error: hasError })}></label>
+      <input
+        class=${clazz}
+        type=${type}
+        name=${name}
+        placeholder=${placeholder}
+        .value=${value.username}
+      />
+    `;
+  }
+};

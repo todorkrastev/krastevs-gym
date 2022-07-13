@@ -1,11 +1,11 @@
 import { html } from "../lib.js";
 import { createSubmitHandler } from "../util.js";
 
-const loginTemplate = () => html`
+const loginTemplate = (onSubmit, errorMsg, username) => html`
   <section id="hero">
     <img src="/imgs/hero.jpg" class="img--bg" alt="Background poster" />
 
-    <form @submit=${(onSubmit, errorMsg, username)} class="hero__form--login">
+    <form @submit=${onSubmit} class="hero__form--login">
       <h1 class="hero__form--login__title">Sign In</h1>
 
       ${errorMsg ? html`<p class="error--msg">${errorMsg}</p>` : null}
@@ -16,7 +16,7 @@ const loginTemplate = () => html`
         type="text"
         name="username"
         placeholder="Username"
-        .values=${username}
+        .value=${username}
       />
 
       <label for="password"></label>

@@ -39,6 +39,10 @@
   font-weight: 900;
 }
 
+.textarea {
+  resize: none;
+}
+
 /* Divider --------- */
 .divider {
   background-color: var(--color-dark-gray);
