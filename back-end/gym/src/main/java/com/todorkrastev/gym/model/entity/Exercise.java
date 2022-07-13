@@ -1,7 +1,6 @@
 package com.todorkrastev.gym.model.entity;
 
-import com.todorkrastev.gym.model.entity.enums.CategoryLevel;
-import com.todorkrastev.gym.model.entity.enums.CategoryName;
+import com.todorkrastev.gym.model.entity.enums.ExerciseCategoryName;
 
 import javax.persistence.*;
 
@@ -10,9 +9,11 @@ import javax.persistence.*;
 public class Exercise extends BaseEntity {
 
     private String name;
-    private String instruction;
-    private CategoryName categoryName;
-    private CategoryLevel categoryLevel;
+    private ExerciseCategoryName exerciseCategoryName;
+    private String file;
+
+    //TODO: How to store in the database video
+    //TODO: If you are running out of time, just add to the database urls.
 
     public Exercise() {
     }
@@ -26,30 +27,22 @@ public class Exercise extends BaseEntity {
         this.name = name;
     }
 
-    @Column(name = "instruction", nullable = false)
-    public String getInstruction() {
-        return instruction;
-    }
-
-    public void setInstruction(String instruction) {
-        this.instruction = instruction;
-    }
-
+    @Column(name = "exercise_category_name", nullable = false)
     @Enumerated(EnumType.STRING)
-    public CategoryName getCategoryName() {
-        return categoryName;
+    public ExerciseCategoryName getExerciseCategoryName() {
+        return exerciseCategoryName;
     }
 
-    public void setCategoryName(CategoryName categoryName) {
-        this.categoryName = categoryName;
+    public void setExerciseCategoryName(ExerciseCategoryName exerciseCategoryName) {
+        this.exerciseCategoryName = exerciseCategoryName;
     }
 
-    @Enumerated(EnumType.STRING)
-    public CategoryLevel getCategoryLevel() {
-        return categoryLevel;
+    @Column(name = "file", nullable = false)
+    public String getFile() {
+        return file;
     }
 
-    public void setCategoryLevel(CategoryLevel categoryLevel) {
-        this.categoryLevel = categoryLevel;
+    public void setFile(String file) {
+        this.file = file;
     }
 }

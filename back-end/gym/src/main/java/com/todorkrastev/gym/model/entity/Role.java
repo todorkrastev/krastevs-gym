@@ -1,6 +1,6 @@
 package com.todorkrastev.gym.model.entity;
 
-import com.todorkrastev.gym.model.entity.enums.RoleName;
+import com.todorkrastev.gym.model.entity.enums.RoleCategoryName;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,14 +11,14 @@ import javax.persistence.Table;
 @Table(name = "roles")
 public class Role extends BaseEntity {
 
-    private RoleName role;
+    private RoleCategoryName role;
 
     @Enumerated(EnumType.STRING)
-    public RoleName getRole() {
+    public RoleCategoryName getRole() {
         return role;
     }
 
-    public void setRole(RoleName role) {
+    public void setRole(RoleCategoryName role) {
         this.role = role;
     }
 }

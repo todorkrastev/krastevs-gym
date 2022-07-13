@@ -1,6 +1,6 @@
 package com.todorkrastev.gym.service.impl;
 
-import com.todorkrastev.gym.model.dto.activity.ActivityDTO;
+import com.todorkrastev.gym.model.dto.activity.FindAllDTO;
 import com.todorkrastev.gym.repository.ActivityRepository;
 import com.todorkrastev.gym.service.ActivityService;
 import org.modelmapper.ModelMapper;
@@ -21,13 +21,11 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<ActivityDTO> findAll() {
-        List<ActivityDTO> dtoList = this.activityRepository
+    public List<FindAllDTO> findAll() {
+        return this.activityRepository
                 .findAll()
                 .stream()
-                .map(activity -> this.modelMapper.map(activity, ActivityDTO.class))
+                .map(activity -> this.modelMapper.map(activity, FindAllDTO.class))
                 .collect(Collectors.toList());
-
-        return dtoList;
     }
 }

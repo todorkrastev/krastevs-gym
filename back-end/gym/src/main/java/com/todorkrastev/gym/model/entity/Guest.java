@@ -9,21 +9,29 @@ import java.time.LocalDateTime;
 @Table(name = "guests")
 public class Guest extends BaseEntity {
 
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String phoneNumber;
-    private LocalDateTime trialDay;
 
     public Guest() {
     }
 
-    @Column(name = "name", nullable = false)
-    public String getName() {
-        return name;
+    @Column(name = "first_name", nullable = false)
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Column(name = "last_name", nullable = false)
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Column(name = "email", nullable = false, unique = true)
@@ -33,23 +41,5 @@ public class Guest extends BaseEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Column(name = "phone_number", nullable = false)
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    @Column(name = "trial_day", nullable = false)
-    public LocalDateTime getTrialDay() {
-        return trialDay;
-    }
-
-    public void setTrialDay(LocalDateTime trialDay) {
-        this.trialDay = trialDay;
     }
 }

@@ -3,28 +3,18 @@ package com.todorkrastev.gym.model.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
 @Table(name = "courses")
 public class Course extends BaseEntity {
 
-    private LocalTime time;
     private String name;
-    private String timeDuration;
-    private String trainer;
     private String room;
+    private LocalDateTime dateTime;
 
     public Course() {
-    }
-
-    @Column(name = "time", nullable = false)
-    public LocalTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalTime time) {
-        this.time = time;
     }
 
     @Column(name = "name", nullable = false)
@@ -36,23 +26,6 @@ public class Course extends BaseEntity {
         this.name = name;
     }
 
-    @Column(name = "time_duration", nullable = false)
-    public String getTimeDuration() {
-        return timeDuration;
-    }
-
-    public void setTimeDuration(String timeDuration) {
-        this.timeDuration = timeDuration;
-    }
-
-    @Column(name = "trainer", nullable = false)
-    public String getTrainer() {
-        return trainer;
-    }
-
-    public void setTrainer(String trainer) {
-        this.trainer = trainer;
-    }
 
     @Column(name = "room", nullable = false)
     public String getRoom() {
@@ -61,5 +34,14 @@ public class Course extends BaseEntity {
 
     public void setRoom(String room) {
         this.room = room;
+    }
+
+    @Column(name = "date_time", nullable = false)
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 }

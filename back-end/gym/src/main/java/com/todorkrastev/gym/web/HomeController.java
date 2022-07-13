@@ -1,6 +1,6 @@
 package com.todorkrastev.gym.web;
 
-import com.todorkrastev.gym.model.dto.activity.ActivityDTO;
+import com.todorkrastev.gym.model.dto.activity.FindAllDTO;
 import com.todorkrastev.gym.service.ActivityService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +17,7 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public List<ActivityDTO> findAll() {
+    public List<FindAllDTO> findAll() {
         return this.activityService.findAll();
     }
 
