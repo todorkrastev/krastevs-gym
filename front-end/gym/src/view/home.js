@@ -9,13 +9,12 @@ const homeTemplate = (activitiesPromise) => html`
     <h2 class="hero__subtitle">GET FIT NOW</h2>
 
     <form class="hero__form" action="">
+      <label for="email"></label>
       <input
+        class="form__input input"
         type="email"
         name="email"
-        class="form__input input"
         placeholder="Email address"
-        minlength="5"
-        maxlength="50"
       />
       <button href="/" class="form__btn btn">Free-trial day</button>
     </form>
@@ -33,8 +32,8 @@ const homeTemplate = (activitiesPromise) => html`
 const activityPreviewCard = (activity) => html`
   <section class="info section">
     <div class="info__wrapper">
-      <h2 class="info__title">${activity.title}<</h2>
-      <p class="info__description">${activity.description}</p>
+      <h2 class="info__title">${activity.title}</h2>
+      <p class="info__description">${activity.shortDescription}</p>
 
       <div class="info__buttons">
         <button class="info__button edit">Edit</button>

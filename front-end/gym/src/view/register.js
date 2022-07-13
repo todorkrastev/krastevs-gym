@@ -1,40 +1,43 @@
 import { html } from "../lib.js";
+import { createSubmitHandler } from "../util.js";
 
-const registerTemplate = () => html`
+const registerTemplate = (onSubmit, errors, values) => html`
   <section id="hero">
     <img src="/imgs/hero.jpg" class="img--bg" alt="Background poster" />
 
-    <form method="POST" class="hero__form--register">
+    <form @submit=${onSubmit} class="hero__form--register">
       <h1 class="hero__form--register__title">Register</h1>
+      <label for="username"></label>
       <input
-        name="email"
         class="hero__form--register__field"
-        placeholder="Email"
+        type="text"
+        name="username"
+        placeholder="Username"
+        .value=${values.username}
+      />
+      <label for="email"></label>
+      <input
+        class="hero__form--register__field"
         type="email"
-        minlength="5"
-        maxlength="50"
-        required
-        value=""
+        name="email"
+        placeholder="Email"
+        .value=${values.email}
       />
+      <label for="password"></label>
       <input
-        name="password"
         class="hero__form--register__field"
+        type="password"
+        name="password"
         placeholder="Password"
-        type="password"
-        minlength="6"
-        maxlength="62"
-        required
-        value=""
+        .value=${values.password}
       />
+      <label for="repeatPassword"></label>
       <input
-        name="password"
         class="hero__form--register__field"
-        placeholder="Repeat Password"
         type="password"
-        minlength="6"
-        maxlength="62"
-        required
-        value=""
+        name="repeatPassword"
+        placeholder="Repeat Password"
+        .value=${values.repeatPassword}
       />
       <button type="submit" class="hero__register--submit btn">Submit</button>
     </form>
@@ -51,5 +54,17 @@ const registerTemplate = () => html`
 `;
 
 export function registerPage(ctx) {
-  ctx.render(registerTemplate());
+  ctx.render(
+    registerTemplate(
+      createSubmitHandler(
+        onSubmit,
+        "username",
+        "email",
+        "password",
+        "repeatPassword"
+      )
+    )
+  );
+
+  async function onSubmit(data) {}
 }

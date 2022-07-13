@@ -1,31 +1,28 @@
 import { html } from "../lib.js";
+import { createSubmitHandler } from "../util.js";
 
 const loginTemplate = () => html`
   <section id="hero">
     <img src="/imgs/hero.jpg" class="img--bg" alt="Background poster" />
 
-    <form method="POST" class="hero__form--login">
+    <form @submit=${onSubmit} class="hero__form--login">
       <h1 class="hero__form--login__title">Sign In</h1>
 
+      <label for="username"></label>
       <input
-        name="username"
         class="hero__form--login__field"
-        placeholder="Username"
         type="text"
-        minlength="1"
-        maxlength="50"
-        required
+        name="username"
+        placeholder="Username"
         value=""
       />
 
+      <label for="password"></label>
       <input
-        name="password"
         class="hero__form--login__field"
-        placeholder="Password"
         type="password"
-        minlength="6"
-        maxlength="62"
-        required
+        name="password"
+        placeholder="Password"
         value=""
       />
 
@@ -40,5 +37,14 @@ const loginTemplate = () => html`
 `;
 
 export function loginPage(ctx) {
-  ctx.render(loginTemplate());
+  ctx.render(
+    loginTemplate(createSubmitHandler(onSubmit, "username", "password"))
+  );
+
+  async function onSubmit(data) {
+    await login(data.email, data.password);
+
+    ctx.updateUserNav();
+    ctx.page.redirect("/");
+  }
 }

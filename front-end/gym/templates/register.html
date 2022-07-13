@@ -52,11 +52,17 @@
 
       <form method="POST" class="hero__form--register">
         <h1 class="hero__form--register__title">Register</h1>
+        <label for="username"></label>
+        <input name="username" class="hero__form--register__field" placeholder="Username" type="text" minlength="1"
+          maxlength="50" required value="">
+        <label for="email"></label>
         <input name="email" class="hero__form--register__field" placeholder="Email" type="email" minlength="5"
           maxlength="50" required value="">
+        <label for="password"></label>
         <input name="password" class="hero__form--register__field" placeholder="Password" type="password" minlength="6"
           maxlength="62" required value="">
-        <input name="password" class="hero__form--register__field" placeholder="Repeat Password" type="password"
+        <label for="repeatPassword"></label>
+        <input name="repeatPassword" class="hero__form--register__field" placeholder="Repeat Password" type="password"
           minlength="6" maxlength="62" required value="">
         <button type="submit" class="hero__register--submit btn">Submit</button>
       </form>
