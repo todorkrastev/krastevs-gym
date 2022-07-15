@@ -1,12 +1,13 @@
 package com.todorkrastev.gym.web;
 
-import com.todorkrastev.gym.model.dto.activity.EditActivityDTO;
-import com.todorkrastev.gym.model.dto.activity.GetAllActivitiesDTO;
+import com.todorkrastev.gym.model.dto.ActivityDTO;
 import com.todorkrastev.gym.service.ActivityService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
+import java.util.Optional;
 
 // TODO: try cross origin with http://localhost:5500/
 @CrossOrigin
@@ -20,18 +21,54 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<GetAllActivitiesDTO>> getAllActivities() {
+    public ResponseEntity<List<ActivityDTO>> getAllActivities() {
         return ResponseEntity
-                .ok(activityService.findAll());
+                .ok(this.activityService.findAll());
     }
-    
-    @PutMapping("/activities/edit/{id}")
-    public ResponseEntity<EditActivityDTO> editActivityDTO(@PathVariable("id") Long activityId, @RequestBody EditActivityDTO editActivityDTO) {
-        boolean isActivityEdited = activityService.editActivityById(activityId, editActivityDTO);
+
+    @GetMapping("/activities/{id}")
+    public ResponseEntity<ActivityDTO> getActivityById(@PathVariable("id") Long activityId) {
+        Optional<ActivityDTO> getActivity = this.activityService.getActivityById(activityId);
+
+        if (getActivity.isEmpty()) {
+            return ResponseEntity.
+                    notFound().
+                    build();
+        } else {
+            return ResponseEntity.
+                    ok(getActivity.get());
+        }
+    }
+
+    @PostMapping("/activities")
+    public ResponseEntity<ActivityDTO> createActivity(@RequestBody ActivityDTO newActivity, UriComponentsBuilder uriComponentsBuilder) {
+        Long newActivityId = this.activityService.createActivity(newActivity);
+
+        return ResponseEntity.
+                created(uriComponentsBuilder.path("/activities/{id}").
+                        build(newActivityId)).
+                build();
+    }
+
+    @PutMapping("/activities/{id}")
+    public ResponseEntity<ActivityDTO> editActivityById(@PathVariable("id") Long activityId, @RequestBody ActivityDTO activityDTO) {
+        boolean isActivityEdited = this.activityService.editActivityById(activityId, activityDTO);
+
+        //TODO: Make a validation if the admin is doing the change
 
         //TODO: Find out how to return the response to the front end
-        //TODO: Should I use PUT or PATCH annotation when I am updating in the database
+
+        //TODO: I need to return a message as a string whether the operation was successful or not
 
         return null;
+    }
+
+    @DeleteMapping("/activities/{id}")
+    public ResponseEntity<ActivityDTO> deleteActivityById(@PathVariable("id") Long activityId) {
+        this.activityService.deleteActivityById(activityId);
+
+        return ResponseEntity
+                .noContent()
+                .build();
     }
 }
