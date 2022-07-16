@@ -6,7 +6,7 @@ VALUES (1, 'ADMIN');
 INSERT INTO roles (id, role)
 VALUES (2, 'USER');
 
-INSERT INTO activities (id, long_description, short_description, title)
-VALUES (1, 'Long Description for text 1', 'Short description for text 1', 'Title 1'),
-       (2, 'Long Description for text 2', 'Short description for text 2', 'Title 2'),
-       (3, 'Long Description for text 3', 'Short description for text 3', 'Title 3');
+INSERT INTO activities (id, description, file, title)
+VALUES (1, 'Description for text 1', 'File 1', 'Title 1'),
+       (2, 'Description for text 2', 'File 2', 'Title 2'),
+       (3, 'Description for text 3', 'File 3', 'Title 3');
