@@ -3,7 +3,6 @@ package com.todorkrastev.gym.config;
 import com.todorkrastev.gym.model.entity.enums.RoleCategoryName;
 import com.todorkrastev.gym.repository.UserRepository;
 import com.todorkrastev.gym.service.impl.AppUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +30,7 @@ public class SecurityConfiguration {
                 // everyone can download static resources (css, js, images)
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 // everyone can log-in and register
-                        antMatchers("/", "/users/login", "/users/register").permitAll().
+                        antMatchers("/", "/users/login", "/users/register", "/trial-day").permitAll().
                 // pages available only for moderators
                         antMatchers("/pages/moderators").hasRole(RoleCategoryName.MODERATOR.name()).
                 // pages available only for admins

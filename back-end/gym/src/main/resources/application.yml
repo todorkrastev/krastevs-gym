@@ -41,6 +41,11 @@ spring:
       #api-key:
       #api-secret:
       #cloud-name:
-      sql:
-      init:
-      mode: always
+      #sql:
+      #init:
+      #mode: always
+
+      app:
+        default:
+          admin:
+            password: topsecret
