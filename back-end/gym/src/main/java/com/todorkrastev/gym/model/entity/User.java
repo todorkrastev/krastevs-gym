@@ -1,7 +1,9 @@
 package com.todorkrastev.gym.model.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -11,12 +13,12 @@ public class User extends BaseEntity {
     private String email;
     private String password;
 
-    private Set<Role> roles;
+    private List<Role> roles;
     private Set<Product> products;
 
 
     public User() {
-        this.roles = new HashSet<>();
+        this.roles = new ArrayList<>();
         this.products = new HashSet<>();
     }
 
@@ -26,8 +28,9 @@ public class User extends BaseEntity {
         return username;
     }
 
-    public void setUsername(String username) {
+    public User setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     @Column(name = "email", nullable = false, unique = true)
@@ -35,8 +38,9 @@ public class User extends BaseEntity {
         return email;
     }
 
-    public void setEmail(String email) {
+    public User setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     @Column(name = "password", nullable = false)
@@ -44,17 +48,19 @@ public class User extends BaseEntity {
         return password;
     }
 
-    public void setPassword(String password) {
+    public User setPassword(String password) {
         this.password = password;
+        return this;
     }
 
     @ManyToMany
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public User setRoles(List<Role> roles) {
         this.roles = roles;
+        return this;
     }
 
     @ManyToMany
