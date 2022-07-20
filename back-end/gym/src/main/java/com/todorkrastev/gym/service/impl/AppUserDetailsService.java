@@ -21,26 +21,25 @@ public class AppUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.
-                findByEmail(username).
-                map(this::map).
-                orElseThrow(() -> new UsernameNotFoundException("User with email " + username + " not found!"));
+                findByUsername(username)
+                .map(this::map)
+                .orElseThrow(() -> new UsernameNotFoundException("User with username " + username + " not found!"));
     }
 
     private UserDetails map(User user) {
-        return org.springframework.security.core.userdetails.User.builder().
-                username(user.getEmail()).
-                password(user.getPassword()).
-                authorities(user.
-                        getRoles().
-                        stream().
-                        map(this::map).
-                        toList()).
-                build();
+        return org.springframework.security.core.userdetails.User
+                .builder()
+                .username(user.getUsername())
+                .password(user.getPassword())
+                .authorities(user.
+                        getRoles()
+                        .stream()
+                        .map(this::map)
+                        .toList())
+                .build();
     }
 
     private GrantedAuthority map(Role role) {
-        return new SimpleGrantedAuthority("ROLE_" +
-                role.
-                        getRole().name());
+        return new SimpleGrantedAuthority("ROLE_" + role.getRole().name());
     }
 }
