@@ -1,6 +1,7 @@
 package com.todorkrastev.gym.web;
 
 import com.todorkrastev.gym.model.dto.PostDTO;
+import com.todorkrastev.gym.model.dto.PostResponseDto;
 import com.todorkrastev.gym.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +27,11 @@ public class PostController {
 
     // get all posts rest api
     @GetMapping
-    public List<PostDTO> getAllPosts() {
-        return this.postService.getAllPosts();
+    public PostResponseDto getAllPosts(
+            @RequestParam(value = "pageNum", defaultValue = "0", required = false) int pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "5", required = false) int pageSize
+    ) {
+        return this.postService.getAllPosts(pageNum, pageSize);
     }
 
     // get post by id

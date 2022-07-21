@@ -24,6 +24,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 
+        /*
         httpSecurity.
                 // defines which requests are allowed and which not
                         authorizeRequests().
@@ -59,6 +60,8 @@ public class SecurityConfiguration {
                 // invalidate the session and delete the cookies
                         invalidateHttpSession(true).
                 deleteCookies("JSESSIONID");
+
+         */
 
         return httpSecurity.build();
     }

@@ -2,10 +2,16 @@ package com.todorkrastev.gym.service.impl;
 
 import com.todorkrastev.gym.exception.ResourceNotFoundException;
 import com.todorkrastev.gym.model.dto.PostDTO;
+import com.todorkrastev.gym.model.dto.PostResponseDto;
 import com.todorkrastev.gym.model.entity.Post;
 import com.todorkrastev.gym.repository.PostRepository;
 import com.todorkrastev.gym.service.PostService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,9 +36,27 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostDTO> getAllPosts() {
-        List<Post> posts = this.postRepository.findAll();
-        return posts.stream().map(this::mapToDTO).collect(Collectors.toList());
+    public PostResponseDto getAllPosts(int pageNum, int pageSize) {
+
+        // create Pageable instance
+        Pageable pageable = PageRequest.of(pageNum, pageSize);
+
+        Page<Post> posts = this.postRepository.findAll(pageable);
+
+        //get content for page object
+        List<Post> listOfPosts = posts.getContent();
+
+        List<PostDTO> content = listOfPosts.stream().map(this::mapToDTO).collect(Collectors.toList());
+
+        PostResponseDto postResponseDto = new PostResponseDto();
+        postResponseDto.setContent(content);
+        postResponseDto.setPageNum(posts.getNumber());
+        postResponseDto.setPageSize(posts.getSize());
+        postResponseDto.setTotalElements(posts.getTotalElements());
+        postResponseDto.setTotalPages(posts.getTotalPages());
+        postResponseDto.setLast(posts.isLast());
+
+        return postResponseDto;
     }
 
     @Override
