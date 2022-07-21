@@ -2,7 +2,7 @@ package com.todorkrastev.gym.model.dto;
 
 import java.util.List;
 
-public class PostResponseDto {
+public class PostResponseDTO {
     private List<PostDTO> content;
     private int pageNum;
     private int pageSize;
@@ -10,7 +10,7 @@ public class PostResponseDto {
     private int totalPages;
     private boolean last;
 
-    public PostResponseDto() {
+    public PostResponseDTO() {
     }
 
     public List<PostDTO> getContent() {

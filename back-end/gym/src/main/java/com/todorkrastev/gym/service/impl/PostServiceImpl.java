@@ -2,7 +2,7 @@ package com.todorkrastev.gym.service.impl;
 
 import com.todorkrastev.gym.exception.ResourceNotFoundException;
 import com.todorkrastev.gym.model.dto.PostDTO;
-import com.todorkrastev.gym.model.dto.PostResponseDto;
+import com.todorkrastev.gym.model.dto.PostResponseDTO;
 import com.todorkrastev.gym.model.entity.Post;
 import com.todorkrastev.gym.repository.PostRepository;
 import com.todorkrastev.gym.service.PostService;
@@ -36,7 +36,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostResponseDto getAllPosts(int pageNum, int pageSize, String sortBy, String sortDir) {
+    public PostResponseDTO getAllPosts(int pageNum, int pageSize, String sortBy, String sortDir) {
 
         Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ?
                 Sort.by(sortBy).ascending() :
@@ -52,7 +52,7 @@ public class PostServiceImpl implements PostService {
 
         List<PostDTO> content = listOfPosts.stream().map(this::mapToDTO).collect(Collectors.toList());
 
-        PostResponseDto postResponseDto = new PostResponseDto();
+        PostResponseDTO postResponseDto = new PostResponseDTO();
         postResponseDto.setContent(content);
         postResponseDto.setPageNum(posts.getNumber());
         postResponseDto.setPageSize(posts.getSize());
@@ -87,6 +87,13 @@ public class PostServiceImpl implements PostService {
         // get post by id from the database
         Post post = this.postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
         this.postRepository.delete(post);
+    }
+
+    @Override
+    public Post findById(Long id) {
+        return this.postRepository
+                .findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
     }
 
     // convert Entity into DTO
