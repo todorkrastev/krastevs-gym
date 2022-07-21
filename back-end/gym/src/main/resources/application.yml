@@ -36,10 +36,6 @@ spring:
       #level:
       #org.hibernate.SQLQuery: TRACE
       #org.hibernate.type.descriptor: TRACE
-      #app:
-      #default:
-      #admin:
-      #password:
       #Cloudinary Properties
       #cloudinary:
       #api-key:
