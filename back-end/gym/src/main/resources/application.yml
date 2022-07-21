@@ -31,10 +31,7 @@ spring:
   sql:
     init:
       mode: never
-app:
-  default:
-    admin:
-      password: topsecret
+
       #logging:
       #level:
       #org.hibernate.SQLQuery: TRACE
@@ -48,3 +45,12 @@ app:
       #api-key:
       #api-secret:
       #cloud-name:
+
+app:
+  default:
+    admin:
+      password: moderator
+    moderator:
+      password: moderator
+    user:
+      password: johndoe

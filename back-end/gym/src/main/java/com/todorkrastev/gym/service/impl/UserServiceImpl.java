@@ -28,6 +28,8 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
     private final UserDetailsService appUserDetailService;
     private String adminPass;
+    private String moderatorPass;
+    private String userPass;
 
 
     public UserServiceImpl(UserRepository userRepository,
@@ -35,13 +37,17 @@ public class UserServiceImpl implements UserService {
                            PasswordEncoder passwordEncoder,
                            ModelMapper modelMapper,
                            UserDetailsService appUserDetailService,
-                           @Value("${app.default.admin.password}") String adminPass) {
+                           @Value("${app.default.admin.password}") String adminPass,
+                           @Value("${app.default.moderator.password}") String moderatorPass,
+                           @Value("${app.default.user.password}") String userPass) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
         this.appUserDetailService = appUserDetailService;
         this.adminPass = adminPass;
+        this.moderatorPass = moderatorPass;
+        this.userPass = userPass;
     }
 
 
@@ -69,30 +75,30 @@ public class UserServiceImpl implements UserService {
         User admin = new User()
                 .setUsername("admin")
                 .setEmail("admin@example.com")
-                .setPassword(passwordEncoder.encode(adminPass))
+                .setPassword(this.passwordEncoder.encode(this.adminPass))
                 .setRoles(roles);
 
-        userRepository.save(admin);
+        this.userRepository.save(admin);
     }
 
     private void initModerator(List<Role> roles) {
         User moderator = new User()
                 .setUsername("moderator")
                 .setEmail("moderator@example.com")
-                .setPassword(passwordEncoder.encode("moderator"))
+                .setPassword(this.passwordEncoder.encode(this.moderatorPass))
                 .setRoles(roles);
 
-        userRepository.save(moderator);
+        this.userRepository.save(moderator);
     }
 
     private void initUser(List<Role> roles) {
         User user = new User()
                 .setUsername("johndoe")
                 .setEmail("johndoe@example.com")
-                .setPassword(passwordEncoder.encode("johndoe"))
+                .setPassword(this.passwordEncoder.encode(this.userPass))
                 .setRoles(roles);
 
-        userRepository.save(user);
+        this.userRepository.save(user);
     }
 
     public void registerAndLogin(RegisterDTO registerDTO) {
@@ -104,7 +110,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository.save(newUser);
 
         UserDetails userDetails =
-                appUserDetailService.loadUserByUsername(newUser.getEmail());
+                this.appUserDetailService.loadUserByUsername(newUser.getEmail());
 
         Authentication auth =
                 new UsernamePasswordAuthenticationToken(
