@@ -33,3 +33,7 @@ VALUES (1, 'Title 1', 'Description for text 1', 'Content 1'),
        (19, 'Title 19', 'Description for text 19', 'Content 19'),
        (20, 'Title 20', 'Description for text 20', 'Content 20'),
        (21, 'Title 21', 'Description for text 21', 'Content 21');
+
+INSERT INTO comments (id, name, body, post_id)
+VALUES (2, 'Comment 2', 'Body 2', '5'),
+       (3, 'Comment 3', 'Body 3', '5');

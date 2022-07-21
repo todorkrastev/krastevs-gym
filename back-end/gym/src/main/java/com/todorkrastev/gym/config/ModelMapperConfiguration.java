@@ -6,6 +6,7 @@ import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 
@@ -19,9 +20,11 @@ public class ModelMapperConfiguration {
         this.passwordEncoder = passwordEncoder;
     }
 
+
     @Bean
     public ModelMapper modelMapper() {
         ModelMapper mapper = new ModelMapper();
+
 
         Converter<String, String> passwordHash = ctx -> ctx.getSource() == null ? null :
                 passwordEncoder.encode(ctx.getSource());
@@ -29,6 +32,7 @@ public class ModelMapperConfiguration {
         mapper.createTypeMap(RegisterDTO.class, User.class)
                 .addMappings(mpr -> mpr.using(passwordHash)
                         .map(RegisterDTO::getPassword, User::setPassword));
+
 
         return mapper;
     }
