@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.todorkrastev.gym.util.AppConstants.*;
+
 @RestController
 @RequestMapping("/posts")
 public class PostController {
@@ -28,10 +30,10 @@ public class PostController {
     // get all posts rest api
     @GetMapping
     public PostResponseDto getAllPosts(
-            @RequestParam(value = "pageNum", defaultValue = "0", required = false) int pageNum,
-            @RequestParam(value = "pageSize", defaultValue = "5", required = false) int pageSize,
-            @RequestParam(value = "sortBy", defaultValue = "id", required = false) String sortBy,
-            @RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir
+            @RequestParam(value = "pageNum", defaultValue = DEFAULT_PAGE_NUMBER, required = false) int pageNum,
+            @RequestParam(value = "pageSize", defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = DEFAULT_SORT_BY, required = false) String sortBy,
+            @RequestParam(value = "sortDir", defaultValue = DEFAULT_SORT_DIRECTION, required = false) String sortDir
     ) {
         return this.postService.getAllPosts(pageNum, pageSize, sortBy, sortDir);
     }
