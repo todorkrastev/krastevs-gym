@@ -6,6 +6,7 @@ import com.todorkrastev.gym.model.dto.PostResponseDTO;
 import com.todorkrastev.gym.model.entity.Post;
 import com.todorkrastev.gym.repository.PostRepository;
 import com.todorkrastev.gym.service.PostService;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,9 +21,11 @@ import java.util.stream.Collectors;
 public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
+    private final ModelMapper modelMapper;
 
-    public PostServiceImpl(PostRepository postRepository) {
+    public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper) {
         this.postRepository = postRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -98,20 +101,11 @@ public class PostServiceImpl implements PostService {
 
     // convert Entity into DTO
     private PostDTO mapToDTO(Post post) {
-        PostDTO postDto = new PostDTO();
-        postDto.setId(post.getId());
-        postDto.setTitle(post.getTitle());
-        postDto.setDescription(post.getDescription());
-        postDto.setContent(post.getContent());
-        return postDto;
+        return this.modelMapper.map(post, PostDTO.class);
     }
 
     // convert DTO to entity
     private Post mapToEntity(PostDTO postDto) {
-        Post post = new Post();
-        post.setTitle(postDto.getTitle());
-        post.setDescription(postDto.getDescription());
-        post.setContent(postDto.getContent());
-        return post;
+        return this.modelMapper.map(postDto, Post.class);
     }
 }

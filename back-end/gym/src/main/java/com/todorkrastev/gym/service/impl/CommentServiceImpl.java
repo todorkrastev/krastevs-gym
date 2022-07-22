@@ -9,6 +9,7 @@ import com.todorkrastev.gym.repository.CommentRepository;
 import com.todorkrastev.gym.service.CommentService;
 import com.todorkrastev.gym.service.PostService;
 import org.jetbrains.annotations.NotNull;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +21,12 @@ public class CommentServiceImpl implements CommentService {
 
     private final CommentRepository commentRepository;
     private final PostService postService;
+    private final ModelMapper modelMapper;
 
-    public CommentServiceImpl(CommentRepository commentRepository, PostService postService) {
+    public CommentServiceImpl(CommentRepository commentRepository, PostService postService, ModelMapper modelMapper) {
         this.commentRepository = commentRepository;
         this.postService = postService;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -97,20 +100,10 @@ public class CommentServiceImpl implements CommentService {
     }
 
     private CommentDTO mapToDTO(Comment comment) {
-        CommentDTO commentDTO = new CommentDTO();
-        commentDTO.setId(comment.getId());
-        commentDTO.setName(comment.getName());
-        commentDTO.setBody(comment.getBody());
-
-        return commentDTO;
+        return this.modelMapper.map(comment, CommentDTO.class);
     }
 
     private Comment mapToEntity(CommentDTO commentDTO) {
-        Comment comment = new Comment();
-        comment.setId(commentDTO.getId());
-        comment.setName(commentDTO.getName());
-        comment.setBody(commentDTO.getBody());
-
-        return comment;
+        return this.modelMapper.map(commentDTO, Comment.class);
     }
 }
