@@ -5,6 +5,7 @@ import com.todorkrastev.gym.model.dto.PostDTO;
 import com.todorkrastev.gym.model.dto.PostResponseDTO;
 import com.todorkrastev.gym.model.entity.Post;
 import com.todorkrastev.gym.repository.PostRepository;
+import com.todorkrastev.gym.service.CommentService;
 import com.todorkrastev.gym.service.PostService;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -101,11 +103,26 @@ public class PostServiceImpl implements PostService {
 
     // convert Entity into DTO
     private PostDTO mapToDTO(Post post) {
-        return this.modelMapper.map(post, PostDTO.class);
+        //return this.modelMapper.map(post, PostDTO.class);
+
+        PostDTO postDto = new PostDTO();
+        postDto.setId(post.getId());
+        postDto.setTitle(post.getTitle());
+        postDto.setDescription(post.getDescription());
+        postDto.setContent(post.getContent());
+
+        return postDto;
     }
 
     // convert DTO to entity
     private Post mapToEntity(PostDTO postDto) {
-        return this.modelMapper.map(postDto, Post.class);
+        //return this.modelMapper.map(postDto, Post.class);
+
+        Post post = new Post();
+        post.setTitle(postDto.getTitle());
+        post.setDescription(postDto.getDescription());
+        post.setContent(postDto.getContent());
+
+        return post;
     }
 }

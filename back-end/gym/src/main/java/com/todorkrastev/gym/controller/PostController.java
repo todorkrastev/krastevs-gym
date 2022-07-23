@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import static com.todorkrastev.gym.util.AppConstants.*;
 
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/api/posts")
 public class PostController {
 
     private final PostService postService;
@@ -47,6 +47,8 @@ public class PostController {
     public ResponseEntity<PostDTO> updatePost(@RequestBody PostDTO postDTO, @PathVariable(name = "id") Long id) {
 
         PostDTO postResponse = this.postService.updatePost(postDTO, id);
+
+        ResponseEntity.ok(postResponse);
 
         return new ResponseEntity<>(postResponse, HttpStatus.OK);
     }

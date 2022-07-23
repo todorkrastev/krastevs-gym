@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "posts")
-public class Post extends BaseEntity{
+public class Post extends BaseEntity {
 
     private String title;
     private String description;
@@ -46,7 +46,7 @@ public class Post extends BaseEntity{
         this.content = content;
     }
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST, orphanRemoval = true)
     public Set<Comment> getComments() {
         return comments;
     }

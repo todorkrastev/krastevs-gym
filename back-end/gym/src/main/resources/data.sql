@@ -1,10 +1,23 @@
 -- https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts
 
+
 -- user roles
 INSERT INTO roles (id, role)
-VALUES (1, 'ADMIN');
-INSERT INTO roles (id, role)
-VALUES (2, 'USER');
+VALUES (1, 'ADMIN'),
+       (2, 'MODERATOR'),
+       (3, 'USER');
+
+INSERT INTO users (id, username, email, password)
+VALUES (1, 'admin', 'admin@example.com', 'admin'),
+       (2, 'moderator', 'moderator@example.com', 'moderator'),
+       (3, 'johndoe', 'johndoe@example.com', 'johndoe');
+
+
+INSERT INTO users_roles (user_id, roles_id)
+VALUES (1, 1),
+       (1, 2),
+       (2, 2),
+       (3, 3);
 
 INSERT INTO activities (id, description, file, title)
 VALUES (1, 'Description for text 1', 'File 1', 'Title 1'),
@@ -35,5 +48,5 @@ VALUES (1, 'Title 1', 'Description for text 1', 'Content 1'),
        (21, 'Title 21', 'Description for text 21', 'Content 21');
 
 INSERT INTO comments (id, name, body, post_id)
-VALUES (2, 'Comment 2', 'Body 2', '5'),
-       (3, 'Comment 3', 'Body 3', '5');
+VALUES (1, 'Comment 1', 'Body 1', '1'),
+       (2, 'Comment 2', 'Body 2', '1');
