@@ -44,11 +44,10 @@ public class PostController {
 
     // update post by id rest api
     @PutMapping("/{id}")
-    public ResponseEntity<PostDTO> updatePost(@RequestBody PostDTO postDTO, @PathVariable(name = "id") Long id) {
+    public ResponseEntity<PostDTO> updatePost(@PathVariable(name = "id") Long id,
+                                              @RequestBody PostDTO postDTO) {
 
         PostDTO postResponse = this.postService.updatePost(postDTO, id);
-
-        ResponseEntity.ok(postResponse);
 
         return new ResponseEntity<>(postResponse, HttpStatus.OK);
     }
@@ -59,6 +58,6 @@ public class PostController {
 
         this.postService.deletePostById(id);
 
-        return new ResponseEntity<>("Post entity deleted successfully.", HttpStatus.OK);
+        return new ResponseEntity<>("Post entity deleted successfully.", HttpStatus.NO_CONTENT);
     }
 }

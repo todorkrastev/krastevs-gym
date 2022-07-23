@@ -8,9 +8,9 @@ import java.util.Optional;
 public interface ActivityService {
     List<ActivityDTO> findAll();
 
-    Optional<ActivityDTO> getActivityById(Long activityId);
+    ActivityDTO getActivityById(Long activityId);
 
-    boolean editActivityById(Long activityId, ActivityDTO activityDTO);
+    ActivityDTO updateActivityById(Long activityId, ActivityDTO activityDTO);
 
     Long createActivity(ActivityDTO newActivity);
 

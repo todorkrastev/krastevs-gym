@@ -12,6 +12,7 @@ import java.util.Optional;
 // TODO: try cross origin with http://localhost:5500/
 @CrossOrigin
 @RestController
+@RequestMapping("/api")
 public class HomeController {
 
     private final ActivityService activityService;
@@ -20,7 +21,7 @@ public class HomeController {
         this.activityService = activityService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<ActivityDTO>> getAllActivities() {
         return ResponseEntity
                 .ok(this.activityService.findAll());
@@ -28,20 +29,12 @@ public class HomeController {
 
     @GetMapping("/activities/{id}")
     public ResponseEntity<ActivityDTO> getActivityById(@PathVariable("id") Long activityId) {
-        Optional<ActivityDTO> getActivity = this.activityService.getActivityById(activityId);
-
-        if (getActivity.isEmpty()) {
-            return ResponseEntity.
-                    notFound().
-                    build();
-        } else {
-            return ResponseEntity.
-                    ok(getActivity.get());
-        }
+        return ResponseEntity.ok(this.activityService.getActivityById(activityId));
     }
 
     @PostMapping("/activities")
-    public ResponseEntity<ActivityDTO> createActivity(@RequestBody ActivityDTO newActivity, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity<ActivityDTO> createActivity(@RequestBody ActivityDTO newActivity,
+                                                      UriComponentsBuilder uriComponentsBuilder) {
         Long newActivityId = this.activityService.createActivity(newActivity);
 
         return ResponseEntity.
@@ -51,16 +44,12 @@ public class HomeController {
     }
 
     @PutMapping("/activities/{id}")
-    public ResponseEntity<ActivityDTO> editActivityById(@PathVariable("id") Long activityId, @RequestBody ActivityDTO activityDTO) {
-        boolean isActivityEdited = this.activityService.editActivityById(activityId, activityDTO);
+    public ResponseEntity<ActivityDTO> updateActivityById(@PathVariable("id") Long activityId,
+                                                          @RequestBody ActivityDTO activityDTO) {
+        ActivityDTO activityResponse = this.activityService.updateActivityById(activityId, activityDTO);
 
+        return ResponseEntity.ok(activityResponse);
         //TODO: Make a validation if the admin is doing the change
-
-        //TODO: Find out how to return the response to the front end
-
-        //TODO: I need to return a message as a string whether the operation was successful or not
-
-        return null;
     }
 
     @DeleteMapping("/activities/{id}")
