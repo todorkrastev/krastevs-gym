@@ -39,6 +39,25 @@ public class ExerciseController {
                 .build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ExerciseDTO> updateExerciseById(@PathVariable("id") Long exerciseId,
+                                                          @RequestBody ExerciseDTO exerciseDTO) {
+        //TODO: Make a validation if the admin is doing the change
+
+        ExerciseDTO exerciseResponse = this.exerciseService.updateExerciseById(exerciseId, exerciseDTO);
+
+        return ResponseEntity.ok(exerciseResponse);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ExerciseDTO> deleteExerciseById(@PathVariable("id") Long exerciseId) {
+        this.exerciseService.deleteExerciseById(exerciseId);
+
+        return ResponseEntity
+                .noContent()
+                .build();
+    }
+
     @GetMapping("/abs")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryAbs() {
         return ResponseEntity

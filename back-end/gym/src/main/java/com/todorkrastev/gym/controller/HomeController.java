@@ -38,18 +38,19 @@ public class HomeController {
         Long newActivityId = this.activityService.createActivity(newActivity);
 
         return ResponseEntity
-                .created(uriComponentsBuilder.path("/activities/{id}").
-                        build(newActivityId))
+                .created(uriComponentsBuilder.path("/activities/{id}")
+                        .build(newActivityId))
                 .build();
     }
 
     @PutMapping("/activities/{id}")
     public ResponseEntity<ActivityDTO> updateActivityById(@PathVariable("id") Long activityId,
                                                           @RequestBody ActivityDTO activityDTO) {
+        //TODO: Make a validation if the admin is doing the change
+
         ActivityDTO activityResponse = this.activityService.updateActivityById(activityId, activityDTO);
 
         return ResponseEntity.ok(activityResponse);
-        //TODO: Make a validation if the admin is doing the change
     }
 
     @DeleteMapping("/activities/{id}")

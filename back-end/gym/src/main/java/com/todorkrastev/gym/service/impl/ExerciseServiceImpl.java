@@ -1,5 +1,6 @@
 package com.todorkrastev.gym.service.impl;
 
+import com.todorkrastev.gym.exception.ResourceNotFoundException;
 import com.todorkrastev.gym.model.dto.ExerciseByCategoryDTO;
 import com.todorkrastev.gym.model.dto.ExerciseDTO;
 import com.todorkrastev.gym.model.entity.Exercise;
@@ -41,6 +42,28 @@ public class ExerciseServiceImpl implements ExerciseService {
         this.exerciseRepository.save(exerciseToSave);
 
         return exerciseToSave.getId();
+    }
+
+    @Override
+    public ExerciseDTO updateExerciseById(Long exerciseId, ExerciseDTO exerciseDTO) {
+        //TODO: Make a validation if the admin is doing the change
+
+        Exercise exercise = this.exerciseRepository.findById(exerciseId).orElseThrow(() -> new ResourceNotFoundException("Exercise", "id", exerciseId));
+
+        exercise.setName(exerciseDTO.getName());
+        exercise.setExerciseCategoryName(exerciseDTO.getExerciseCategoryName());
+        exercise.setFile(exerciseDTO.getFile());
+
+        Exercise updateExercise = this.exerciseRepository.save(exercise);
+
+        return this.modelMapper.map(updateExercise, ExerciseDTO.class);
+    }
+
+    @Override
+    public void deleteExerciseById(Long exerciseId) {
+        Exercise exercise = this.exerciseRepository.findById(exerciseId).orElseThrow(() -> new ResourceNotFoundException("Exercise", "id", exerciseId));
+
+        this.exerciseRepository.delete(exercise);
     }
 
     @Override

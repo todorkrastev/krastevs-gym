@@ -11,6 +11,10 @@ public interface ExerciseService {
 
     Long createExercise(ExerciseDTO newExercise);
 
+    ExerciseDTO updateExerciseById(Long exerciseId, ExerciseDTO exerciseDTO);
+
+    void deleteExerciseById(Long exerciseId);
+
     List<ExerciseByCategoryDTO> findByExerciseCategoryAbs(ExerciseCategoryName abs);
 
     List<ExerciseByCategoryDTO> findByExerciseCategoryArms(ExerciseCategoryName arms);
@@ -22,4 +26,5 @@ public interface ExerciseService {
     List<ExerciseByCategoryDTO> findByExerciseCategoryLegs(ExerciseCategoryName legs);
 
     List<ExerciseByCategoryDTO> findByExerciseCategoryShoulders(ExerciseCategoryName shoulders);
+
 }
