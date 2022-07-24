@@ -34,4 +34,23 @@ public class CourseController {
                         .build(newCourseId))
                 .build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CourseDTO> updateCourseById(@PathVariable("id") Long courseId,
+                                                      @RequestBody CourseDTO courseDTO) {
+        //TODO: Make a validation if the admin is doing the change
+
+        CourseDTO courseResponse = this.courseService.updateCourseById(courseId, courseDTO);
+
+        return ResponseEntity.ok(courseResponse);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CourseDTO> deleteCourseById(@PathVariable("id") Long courseId) {
+        this.courseService.deleteCourseById(courseId);
+
+        return ResponseEntity
+                .noContent()
+                .build();
+    }
 }

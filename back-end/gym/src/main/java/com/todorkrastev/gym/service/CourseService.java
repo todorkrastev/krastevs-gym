@@ -8,4 +8,8 @@ public interface CourseService {
     List<CourseDTO> findAll();
 
     Long createCourse(CourseDTO newCourse);
+
+    CourseDTO updateCourseById(Long courseId, CourseDTO courseDTO);
+
+    void deleteCourseById(Long courseId);
 }
