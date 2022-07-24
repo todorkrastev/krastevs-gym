@@ -37,10 +37,10 @@ public class HomeController {
                                                       UriComponentsBuilder uriComponentsBuilder) {
         Long newActivityId = this.activityService.createActivity(newActivity);
 
-        return ResponseEntity.
-                created(uriComponentsBuilder.path("/activities/{id}").
-                        build(newActivityId)).
-                build();
+        return ResponseEntity
+                .created(uriComponentsBuilder.path("/activities/{id}").
+                        build(newActivityId))
+                .build();
     }
 
     @PutMapping("/activities/{id}")
