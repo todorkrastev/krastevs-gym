@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
-import java.util.Optional;
 
 // TODO: try cross origin with http://localhost:5500/
 @CrossOrigin
@@ -38,7 +37,7 @@ public class HomeController {
         Long newActivityId = this.activityService.createActivity(newActivity);
 
         return ResponseEntity
-                .created(uriComponentsBuilder.path("/activities/{id}")
+                .created(uriComponentsBuilder.path("/api/activities/{id}")
                         .build(newActivityId))
                 .build();
     }

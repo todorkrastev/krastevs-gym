@@ -31,10 +31,12 @@ public class ExerciseController {
     @PostMapping("/add-exercise")
     public ResponseEntity<ExerciseDTO> createExercise(@RequestBody ExerciseDTO newExercise,
                                                       UriComponentsBuilder uriComponentsBuilder) {
+        //TODO: throw an exception if so tries to create the same exercise which is already in the DB
+
         Long newExerciseId = this.exerciseService.createExercise(newExercise);
 
         return ResponseEntity
-                .created(uriComponentsBuilder.path("/exercises/{id}")
+                .created(uriComponentsBuilder.path("/api/exercises/{id}")
                         .build(newExerciseId))
                 .build();
     }

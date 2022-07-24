@@ -27,10 +27,12 @@ public class CourseController {
     @PostMapping("/add-course")
     public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO newCourse,
                                                   UriComponentsBuilder uriComponentsBuilder) {
+        //TODO: throw an exception if so tries to create the same course which is already in the DB
+
         Long newCourseId = this.courseService.createCourse(newCourse);
 
         return ResponseEntity
-                .created(uriComponentsBuilder.path("/courses/{id}")
+                .created(uriComponentsBuilder.path("/api/courses/{id}")
                         .build(newCourseId))
                 .build();
     }
