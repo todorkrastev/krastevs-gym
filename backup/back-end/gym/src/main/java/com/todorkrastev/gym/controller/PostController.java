@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import static com.todorkrastev.gym.util.AppConstants.*;
 
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/api/posts")
 public class PostController {
 
     private final PostService postService;
@@ -44,7 +44,8 @@ public class PostController {
 
     // update post by id rest api
     @PutMapping("/{id}")
-    public ResponseEntity<PostDTO> updatePost(@RequestBody PostDTO postDTO, @PathVariable(name = "id") Long id) {
+    public ResponseEntity<PostDTO> updatePost(@PathVariable(name = "id") Long id,
+                                              @RequestBody PostDTO postDTO) {
 
         PostDTO postResponse = this.postService.updatePost(postDTO, id);
 
@@ -57,6 +58,6 @@ public class PostController {
 
         this.postService.deletePostById(id);
 
-        return new ResponseEntity<>("Post entity deleted successfully.", HttpStatus.OK);
+        return new ResponseEntity<>("Post entity deleted successfully.", HttpStatus.NO_CONTENT);
     }
 }

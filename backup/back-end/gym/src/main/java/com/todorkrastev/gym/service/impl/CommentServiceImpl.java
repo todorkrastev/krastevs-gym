@@ -100,10 +100,24 @@ public class CommentServiceImpl implements CommentService {
     }
 
     private CommentDTO mapToDTO(Comment comment) {
-        return this.modelMapper.map(comment, CommentDTO.class);
+        //return this.modelMapper.map(comment, CommentDTO.class);
+
+        CommentDTO commentDto = new CommentDTO();
+        commentDto.setId(comment.getId());
+        commentDto.setName(comment.getName());
+        commentDto.setBody(comment.getBody());
+
+        return commentDto;
     }
 
     private Comment mapToEntity(CommentDTO commentDTO) {
-        return this.modelMapper.map(commentDTO, Comment.class);
+        //return this.modelMapper.map(commentDTO, Comment.class);
+
+        Comment comment = new Comment();
+        comment.setId(commentDTO.getId());
+        comment.setName(commentDTO.getName());
+        comment.setBody(commentDTO.getBody());
+
+        return comment;
     }
 }

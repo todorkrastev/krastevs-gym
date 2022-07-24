@@ -3,6 +3,7 @@ package com.todorkrastev.gym.service;
 import com.todorkrastev.gym.model.dto.CommentDTO;
 
 import java.util.List;
+import java.util.Set;
 
 public interface CommentService {
     CommentDTO createComment(Long postId, CommentDTO commentDTO);

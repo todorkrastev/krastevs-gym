@@ -1,25 +1,18 @@
-package com.todorkrastev.gym.model.entity;
+package com.todorkrastev.gym.model.dto;
 
 import com.todorkrastev.gym.model.entity.enums.CourseCategoryName;
 import com.todorkrastev.gym.model.entity.enums.RoomCategoryName;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Entity
-@Table(name = "courses")
-public class Course extends BaseEntity {
-
+public class CourseDTO {
     private CourseCategoryName courseCategoryName;
     private RoomCategoryName roomCategoryName;
     private LocalDateTime dateTime;
 
-    public Course() {
+    public CourseDTO() {
     }
 
-    @Column(name = "course_category_name", nullable = false)
-    @Enumerated(EnumType.STRING)
     public CourseCategoryName getCourseCategoryName() {
         return courseCategoryName;
     }
@@ -28,8 +21,6 @@ public class Course extends BaseEntity {
         this.courseCategoryName = courseCategoryName;
     }
 
-    @Column(name = "room_category_name", nullable = false)
-    @Enumerated(EnumType.STRING)
     public RoomCategoryName getRoomCategoryName() {
         return roomCategoryName;
     }
@@ -38,7 +29,6 @@ public class Course extends BaseEntity {
         this.roomCategoryName = roomCategoryName;
     }
 
-    @Column(name = "date_time", nullable = false)
     public LocalDateTime getDateTime() {
         return dateTime;
     }

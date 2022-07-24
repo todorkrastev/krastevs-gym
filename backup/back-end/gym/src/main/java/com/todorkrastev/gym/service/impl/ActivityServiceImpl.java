@@ -1,5 +1,6 @@
 package com.todorkrastev.gym.service.impl;
 
+import com.todorkrastev.gym.exception.ResourceNotFoundException;
 import com.todorkrastev.gym.model.dto.ActivityDTO;
 import com.todorkrastev.gym.model.entity.Activity;
 import com.todorkrastev.gym.repository.ActivityRepository;
@@ -34,12 +35,19 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public Optional<ActivityDTO> getActivityById(Long activityId) {
+    public ActivityDTO getActivityById(Long activityId) {
+        Activity activity = this.activityRepository.findById(activityId).orElseThrow(() -> new ResourceNotFoundException("Activity", "id", activityId));
+
+        return this.modelMapper.map(activity, ActivityDTO.class);
+
+        /*
         return this.activityRepository
                 .findById(activityId)
                 .map(activity ->
                         this.modelMapper
                                 .map(activity, ActivityDTO.class));
+
+         */
     }
 
     @Override
@@ -53,35 +61,25 @@ public class ActivityServiceImpl implements ActivityService {
 
 
     @Override
-    public boolean editActivityById(Long activityId, ActivityDTO activityDTO) {
+    public ActivityDTO updateActivityById(Long activityId, ActivityDTO activityDTO) {
 
         //TODO: Make a validation if the admin is doing the change
 
-        Optional<Activity> activityToUpdate = this.activityRepository.findById(activityId);
+        Activity activity = this.activityRepository.findById(activityId).orElseThrow(() -> new ResourceNotFoundException("Activity", "id", activityId));
 
-        if (activityToUpdate.isEmpty()) {
-            return false;
-        }
+        activity.setTitle(activityDTO.getTitle());
+        activity.setDescription(activityDTO.getDescription());
+        activity.setFile(activityDTO.getDescription());
 
-        activityToUpdate.ifPresent(activity -> {
-            activity.setTitle(activityDTO.getTitle());
-            activity.setDescription(activityDTO.getDescription());
-            activity.setFile(activityDTO.getFile());
-        });
+        Activity updatedActivity = this.activityRepository.save(activity);
 
-        Activity activity = modelMapper.map(activityToUpdate, Activity.class);
-
-        this.activityRepository.save(activity);
-
-        return true;
+        return this.modelMapper.map(updatedActivity, ActivityDTO.class);
     }
 
     @Override
     public void deleteActivityById(Long activityId) {
-        try {
-            this.activityRepository.deleteById(activityId);
-        } catch (EmptyResultDataAccessException e) {
-            e.printStackTrace();
-        }
+        Activity activity = this.activityRepository.findById(activityId).orElseThrow(() -> new ResourceNotFoundException("Activity", "id", activityId));
+
+        this.activityRepository.delete(activity);
     }
 }
