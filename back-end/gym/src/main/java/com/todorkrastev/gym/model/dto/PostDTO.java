@@ -1,6 +1,5 @@
 package com.todorkrastev.gym.model.dto;
 
-import java.util.List;
 import java.util.Set;
 
 public class PostDTO {
@@ -8,7 +7,7 @@ public class PostDTO {
     private String title;
     private String description;
     private String content;
-    private List<CommentDTO> comments;
+    private Set<CommentDTO> comments;
 
     public PostDTO() {
     }
@@ -45,11 +44,11 @@ public class PostDTO {
         this.content = content;
     }
 
-    public List<CommentDTO> getComments() {
+    public Set<CommentDTO> getComments() {
         return comments;
     }
 
-    public void setComments(List<CommentDTO> comments) {
+    public void setComments(Set<CommentDTO> comments) {
         this.comments = comments;
     }
 }

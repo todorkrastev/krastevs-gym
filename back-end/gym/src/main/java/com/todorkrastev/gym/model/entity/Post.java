@@ -46,7 +46,7 @@ public class Post extends BaseEntity {
         this.content = content;
     }
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     public Set<Comment> getComments() {
         return comments;
     }
