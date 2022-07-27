@@ -1,15 +1,16 @@
 package com.todorkrastev.gym.service;
 
 import com.todorkrastev.gym.model.dto.ProductDTO;
-
-import java.util.List;
+import com.todorkrastev.gym.model.dto.ProductResponseDTO;
 
 public interface ProductService {
-    List<ProductDTO> findAll();
+
+    ProductResponseDTO getAllPosts(int pageNum, int pageSize, String sortBy, String sortDir);
 
     Long createProduct(ProductDTO newProduct);
 
     ProductDTO updateProductById(Long productId, ProductDTO productDTO);
 
     void deleteProductById(Long productId);
+
 }

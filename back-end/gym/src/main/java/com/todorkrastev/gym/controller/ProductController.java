@@ -1,12 +1,14 @@
 package com.todorkrastev.gym.controller;
 
 import com.todorkrastev.gym.model.dto.ProductDTO;
+import com.todorkrastev.gym.model.dto.ProductResponseDTO;
 import com.todorkrastev.gym.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.List;
+import static com.todorkrastev.gym.util.AppConstants.*;
+import static com.todorkrastev.gym.util.AppConstants.DEFAULT_SORT_DIRECTION;
 
 // TODO: try cross origin with http://localhost:5500/
 @CrossOrigin
@@ -21,9 +23,13 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> getAllProducts() {
-        return ResponseEntity
-                .ok(this.productService.findAll());
+    public ProductResponseDTO getAllProducts(
+            @RequestParam(value = "pageNum", defaultValue = DEFAULT_PAGE_NUMBER, required = false) int pageNum,
+            @RequestParam(value = "pageSize", defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = DEFAULT_SORT_BY, required = false) String sortBy,
+            @RequestParam(value = "sortDir", defaultValue = DEFAULT_SORT_DIRECTION, required = false) String sortDir
+    ) {
+        return this.productService.getAllPosts(pageNum, pageSize, sortBy, sortDir);
     }
 
     @PostMapping("/add-product")

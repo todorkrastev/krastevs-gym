@@ -2,7 +2,6 @@ package com.todorkrastev.gym.controller;
 
 import com.todorkrastev.gym.model.dto.ExerciseByCategoryDTO;
 import com.todorkrastev.gym.model.dto.ExerciseDTO;
-import com.todorkrastev.gym.model.entity.enums.ExerciseCategoryName;
 import com.todorkrastev.gym.service.ExerciseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -62,36 +61,42 @@ public class ExerciseController {
 
     @GetMapping("/abs")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryAbs() {
+        //TODO: Pagination and Sorting
         return ResponseEntity
                 .ok(this.exerciseService.findByExerciseCategoryAbs());
     }
 
     @GetMapping("/arms")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryArms() {
+        //TODO: Pagination and Sorting
         return ResponseEntity
                 .ok(this.exerciseService.findByExerciseCategoryArms());
     }
 
     @GetMapping("/back")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryBack() {
+        //TODO: Pagination and Sorting
         return ResponseEntity
                 .ok(this.exerciseService.findByExerciseCategoryBack());
     }
 
     @GetMapping("/chest")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryChest() {
+        //TODO: Pagination and Sorting
         return ResponseEntity
                 .ok(this.exerciseService.findByExerciseCategoryChest());
     }
 
     @GetMapping("/legs")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryLegs() {
+        //TODO: Pagination and Sorting
         return ResponseEntity
                 .ok(this.exerciseService.findByExerciseCategoryLegs());
     }
 
     @GetMapping("/shoulders")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryShoulders() {
+        //TODO: Pagination and Sorting
         return ResponseEntity
                 .ok(this.exerciseService.findByExerciseCategoryShoulders());
     }
