@@ -63,36 +63,36 @@ public class ExerciseController {
     @GetMapping("/abs")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryAbs() {
         return ResponseEntity
-                .ok(this.exerciseService.findByExerciseCategoryAbs(ExerciseCategoryName.ABS));
+                .ok(this.exerciseService.findByExerciseCategoryAbs());
     }
 
     @GetMapping("/arms")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryArms() {
         return ResponseEntity
-                .ok(this.exerciseService.findByExerciseCategoryArms(ExerciseCategoryName.ARMS));
+                .ok(this.exerciseService.findByExerciseCategoryArms());
     }
 
     @GetMapping("/back")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryBack() {
         return ResponseEntity
-                .ok(this.exerciseService.findByExerciseCategoryBack(ExerciseCategoryName.BACK));
+                .ok(this.exerciseService.findByExerciseCategoryBack());
     }
 
     @GetMapping("/chest")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryChest() {
         return ResponseEntity
-                .ok(this.exerciseService.findByExerciseCategoryChest(ExerciseCategoryName.CHEST));
+                .ok(this.exerciseService.findByExerciseCategoryChest());
     }
 
     @GetMapping("/legs")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryLegs() {
         return ResponseEntity
-                .ok(this.exerciseService.findByExerciseCategoryLegs(ExerciseCategoryName.LEGS));
+                .ok(this.exerciseService.findByExerciseCategoryLegs());
     }
 
     @GetMapping("/shoulders")
     public ResponseEntity<List<ExerciseByCategoryDTO>> getExerciseByCategoryShoulders() {
         return ResponseEntity
-                .ok(this.exerciseService.findByExerciseCategoryShoulders(ExerciseCategoryName.SHOULDERS));
+                .ok(this.exerciseService.findByExerciseCategoryShoulders());
     }
 }

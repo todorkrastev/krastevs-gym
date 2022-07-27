@@ -4,7 +4,6 @@ import com.todorkrastev.gym.exception.ResourceNotFoundException;
 import com.todorkrastev.gym.model.dto.ExerciseByCategoryDTO;
 import com.todorkrastev.gym.model.dto.ExerciseDTO;
 import com.todorkrastev.gym.model.entity.Exercise;
-import com.todorkrastev.gym.model.entity.enums.ExerciseCategoryName;
 import com.todorkrastev.gym.repository.ExerciseRepository;
 import com.todorkrastev.gym.service.ExerciseService;
 import org.modelmapper.ModelMapper;
@@ -67,54 +66,54 @@ public class ExerciseServiceImpl implements ExerciseService {
     }
 
     @Override
-    public List<ExerciseByCategoryDTO> findByExerciseCategoryAbs(ExerciseCategoryName abs) {
+    public List<ExerciseByCategoryDTO> findByExerciseCategoryAbs() {
         return this.exerciseRepository
-                .findByExerciseCategoryName(abs)
+                .findAllByCategoryNameAbs()
                 .stream()
                 .map(exercise -> this.modelMapper.map(exercise, ExerciseByCategoryDTO.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ExerciseByCategoryDTO> findByExerciseCategoryArms(ExerciseCategoryName arms) {
+    public List<ExerciseByCategoryDTO> findByExerciseCategoryArms() {
         return this.exerciseRepository
-                .findByExerciseCategoryName(arms)
+                .findAllByCategoryNameArms()
                 .stream()
                 .map(exercise -> this.modelMapper.map(exercise, ExerciseByCategoryDTO.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ExerciseByCategoryDTO> findByExerciseCategoryBack(ExerciseCategoryName back) {
+    public List<ExerciseByCategoryDTO> findByExerciseCategoryBack() {
         return this.exerciseRepository
-                .findByExerciseCategoryName(back)
+                .findAllByCategoryNameBack()
                 .stream()
                 .map(exercise -> this.modelMapper.map(exercise, ExerciseByCategoryDTO.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ExerciseByCategoryDTO> findByExerciseCategoryChest(ExerciseCategoryName chest) {
+    public List<ExerciseByCategoryDTO> findByExerciseCategoryChest() {
         return this.exerciseRepository
-                .findByExerciseCategoryName(chest)
+                .findAllByCategoryNameChest()
                 .stream()
                 .map(exercise -> this.modelMapper.map(exercise, ExerciseByCategoryDTO.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ExerciseByCategoryDTO> findByExerciseCategoryLegs(ExerciseCategoryName legs) {
+    public List<ExerciseByCategoryDTO> findByExerciseCategoryLegs() {
         return this.exerciseRepository
-                .findByExerciseCategoryName(legs)
+                .findAllByCategoryNameLegs()
                 .stream()
                 .map(exercise -> this.modelMapper.map(exercise, ExerciseByCategoryDTO.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ExerciseByCategoryDTO> findByExerciseCategoryShoulders(ExerciseCategoryName shoulders) {
+    public List<ExerciseByCategoryDTO> findByExerciseCategoryShoulders() {
         return this.exerciseRepository
-                .findByExerciseCategoryName(shoulders)
+                .findAllByCategoryNameShoulders()
                 .stream()
                 .map(exercise -> this.modelMapper.map(exercise, ExerciseByCategoryDTO.class))
                 .collect(Collectors.toList());

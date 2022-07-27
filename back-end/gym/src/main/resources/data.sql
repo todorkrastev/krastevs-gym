@@ -50,3 +50,5 @@ VALUES (1, 'Title 1', 'Description for text 1', 'Content 1'),
 INSERT INTO comments (id, name, body, post_id)
 VALUES (1, 'Comment 1', 'Body 1', '1'),
        (2, 'Comment 2', 'Body 2', '1');
+
+SELECT * FROM exercises e WHERE e.exercise_category_name = 'legs'

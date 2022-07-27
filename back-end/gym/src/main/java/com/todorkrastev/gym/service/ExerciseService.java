@@ -2,7 +2,6 @@ package com.todorkrastev.gym.service;
 
 import com.todorkrastev.gym.model.dto.ExerciseByCategoryDTO;
 import com.todorkrastev.gym.model.dto.ExerciseDTO;
-import com.todorkrastev.gym.model.entity.enums.ExerciseCategoryName;
 
 import java.util.List;
 
@@ -15,16 +14,16 @@ public interface ExerciseService {
 
     void deleteExerciseById(Long exerciseId);
 
-    List<ExerciseByCategoryDTO> findByExerciseCategoryAbs(ExerciseCategoryName abs);
+    List<ExerciseByCategoryDTO>  findByExerciseCategoryAbs();
 
-    List<ExerciseByCategoryDTO> findByExerciseCategoryArms(ExerciseCategoryName arms);
+    List<ExerciseByCategoryDTO> findByExerciseCategoryArms();
 
-    List<ExerciseByCategoryDTO> findByExerciseCategoryBack(ExerciseCategoryName back);
+    List<ExerciseByCategoryDTO> findByExerciseCategoryBack();
 
-    List<ExerciseByCategoryDTO> findByExerciseCategoryChest(ExerciseCategoryName chest);
+    List<ExerciseByCategoryDTO> findByExerciseCategoryChest();
 
-    List<ExerciseByCategoryDTO> findByExerciseCategoryLegs(ExerciseCategoryName legs);
+    List<ExerciseByCategoryDTO> findByExerciseCategoryLegs();
 
-    List<ExerciseByCategoryDTO> findByExerciseCategoryShoulders(ExerciseCategoryName shoulders);
+    List<ExerciseByCategoryDTO> findByExerciseCategoryShoulders();
 
 }
