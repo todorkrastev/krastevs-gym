@@ -31,11 +31,11 @@ spring:
   sql:
     init:
       mode: never
-  security:
-    user:
-      name: todor
-      password: todor
-      roles: ADMIN, MODERATOR
+#  security:
+#    user:
+#      name: todor
+#      password: todor
+#      roles: ADMIN, MODERATOR
 
 logging:
   level:
