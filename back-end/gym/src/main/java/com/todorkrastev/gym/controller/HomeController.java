@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.util.List;
 
 // TODO: try cross origin with http://localhost:5500/
@@ -31,8 +32,8 @@ public class HomeController {
         return ResponseEntity.ok(this.activityService.getActivityById(activityId));
     }
 
-    @PostMapping("/activities")
-    public ResponseEntity<ActivityDTO> createActivity(@RequestBody ActivityDTO newActivity,
+    @PostMapping("/activities/add-activity")
+    public ResponseEntity<ActivityDTO> createActivity(@Valid @RequestBody ActivityDTO newActivity,
                                                       UriComponentsBuilder uriComponentsBuilder) {
         Long newActivityId = this.activityService.createActivity(newActivity);
 
@@ -44,7 +45,7 @@ public class HomeController {
 
     @PutMapping("/activities/{id}")
     public ResponseEntity<ActivityDTO> updateActivityById(@PathVariable("id") Long activityId,
-                                                          @RequestBody ActivityDTO activityDTO) {
+                                                          @Valid @RequestBody ActivityDTO activityDTO) {
         //TODO: Make a validation if the admin is doing the change
 
         ActivityDTO activityResponse = this.activityService.updateActivityById(activityId, activityDTO);

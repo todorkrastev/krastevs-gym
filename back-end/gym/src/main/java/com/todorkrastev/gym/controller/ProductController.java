@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
+
 import static com.todorkrastev.gym.util.AppConstants.*;
 import static com.todorkrastev.gym.util.AppConstants.DEFAULT_SORT_DIRECTION;
 
@@ -33,7 +35,7 @@ public class ProductController {
     }
 
     @PostMapping("/add-product")
-    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO newProduct,
+    public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO newProduct,
                                                     UriComponentsBuilder uriComponentsBuilder) {
         //TODO: throw an exception if so tries to create the same product which is already in the DB
         Long newProductId = this.productService.createProduct(newProduct);
@@ -46,7 +48,7 @@ public class ProductController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ProductDTO> updateProductById(@PathVariable("id") Long productId,
-                                                        @RequestBody ProductDTO productDTO) {
+                                                        @Valid @RequestBody ProductDTO productDTO) {
         //TODO: Make a validation if the admin is doing the change
 
         ProductDTO productResponse = this.productService.updateProductById(productId, productDTO);

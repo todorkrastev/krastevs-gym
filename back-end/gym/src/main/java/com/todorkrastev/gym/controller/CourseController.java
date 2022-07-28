@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.util.List;
 
 // TODO: try cross origin with http://localhost:5500/
@@ -25,7 +26,7 @@ public class CourseController {
     }
 
     @PostMapping("/add-course")
-    public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO newCourse,
+    public ResponseEntity<CourseDTO> createCourse(@Valid @RequestBody CourseDTO newCourse,
                                                   UriComponentsBuilder uriComponentsBuilder) {
         //TODO: throw an exception if so tries to create the same course which is already in the DB
 
@@ -39,7 +40,7 @@ public class CourseController {
 
     @PutMapping("/{id}")
     public ResponseEntity<CourseDTO> updateCourseById(@PathVariable("id") Long courseId,
-                                                      @RequestBody CourseDTO courseDTO) {
+                                                      @Valid @RequestBody CourseDTO courseDTO) {
         //TODO: Make a validation if the admin is doing the change
 
         CourseDTO courseResponse = this.courseService.updateCourseById(courseId, courseDTO);

@@ -1,5 +1,8 @@
 package com.todorkrastev.gym.model.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class CommentDTO {
     private Long id;
     private String name;
@@ -16,6 +19,8 @@ public class CommentDTO {
         this.id = id;
     }
 
+    @NotBlank(message = "Name must not be null and must contain at least one non-whitespace character!")
+    @Size(min = 1, message = "Name must have at least 1 character!")
     public String getName() {
         return name;
     }
@@ -24,6 +29,8 @@ public class CommentDTO {
         this.name = name;
     }
 
+    @NotBlank(message = "Body must not be null and must contain at least one non-whitespace character!")
+    @Size(min = 1, message = "Body must have at least 1 character!")
     public String getBody() {
         return body;
     }

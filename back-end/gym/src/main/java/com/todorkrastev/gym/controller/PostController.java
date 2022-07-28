@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 import static com.todorkrastev.gym.util.AppConstants.*;
 
 @RestController
@@ -21,7 +23,7 @@ public class PostController {
 
     // create blog post rest api
     @PostMapping
-    public ResponseEntity<PostDTO> createPost(@RequestBody PostDTO postDTO) {
+    public ResponseEntity<PostDTO> createPost(@Valid @RequestBody PostDTO postDTO) {
         return new ResponseEntity<>(this.postService.createPost(postDTO), HttpStatus.CREATED);
     }
 
@@ -45,7 +47,7 @@ public class PostController {
     // update post by id rest api
     @PutMapping("/{id}")
     public ResponseEntity<PostDTO> updatePost(@PathVariable(name = "id") Long id,
-                                              @RequestBody PostDTO postDTO) {
+                                              @Valid @RequestBody PostDTO postDTO) {
         PostDTO postResponse = this.postService.updatePost(postDTO, id);
 
         return new ResponseEntity<>(postResponse, HttpStatus.OK);

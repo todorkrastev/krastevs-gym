@@ -2,7 +2,10 @@ package com.todorkrastev.gym.model.dto;
 
 import com.todorkrastev.gym.model.entity.enums.CourseCategoryName;
 import com.todorkrastev.gym.model.entity.enums.RoomCategoryName;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class CourseDTO {
@@ -13,6 +16,7 @@ public class CourseDTO {
     public CourseDTO() {
     }
 
+    @NotNull(message = "You must select the category!")
     public CourseCategoryName getCourseCategoryName() {
         return courseCategoryName;
     }
@@ -21,6 +25,7 @@ public class CourseDTO {
         this.courseCategoryName = courseCategoryName;
     }
 
+    @NotNull(message = "You must select the category!")
     public RoomCategoryName getRoomCategoryName() {
         return roomCategoryName;
     }
@@ -29,6 +34,9 @@ public class CourseDTO {
         this.roomCategoryName = roomCategoryName;
     }
 
+    @NotNull(message = "You must select the date and time!")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @FutureOrPresent(message = "The date must be an instant, date or time in the present or in the future!")
     public LocalDateTime getDateTime() {
         return dateTime;
     }

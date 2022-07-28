@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.util.List;
 
 // TODO: try cross origin with http://localhost:5500/
@@ -28,7 +29,7 @@ public class ExerciseController {
     }
 
     @PostMapping("/add-exercise")
-    public ResponseEntity<ExerciseDTO> createExercise(@RequestBody ExerciseDTO newExercise,
+    public ResponseEntity<ExerciseDTO> createExercise(@Valid @RequestBody ExerciseDTO newExercise,
                                                       UriComponentsBuilder uriComponentsBuilder) {
         //TODO: throw an exception if so tries to create the same exercise which is already in the DB
 
@@ -42,7 +43,7 @@ public class ExerciseController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ExerciseDTO> updateExerciseById(@PathVariable("id") Long exerciseId,
-                                                          @RequestBody ExerciseDTO exerciseDTO) {
+                                                          @Valid @RequestBody ExerciseDTO exerciseDTO) {
         //TODO: Make a validation if the admin is doing the change
 
         ExerciseDTO exerciseResponse = this.exerciseService.updateExerciseById(exerciseId, exerciseDTO);
