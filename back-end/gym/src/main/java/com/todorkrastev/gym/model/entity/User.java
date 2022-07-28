@@ -1,9 +1,7 @@
 package com.todorkrastev.gym.model.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,12 +11,12 @@ public class User extends BaseEntity {
     private String email;
     private String password;
 
-    private List<Role> roles;
+    private Set<Role> roles;
     private Set<Product> products;
 
 
     public User() {
-        this.roles = new ArrayList<>();
+        this.roles = new HashSet<>();
         this.products = new HashSet<>();
     }
 
@@ -53,12 +51,12 @@ public class User extends BaseEntity {
         return this;
     }
 
-    @ManyToMany
-    public List<Role> getRoles() {
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public User setRoles(List<Role> roles) {
+    public User setRoles(Set<Role> roles) {
         this.roles = roles;
         return this;
     }
