@@ -31,16 +31,22 @@ spring:
   sql:
     init:
       mode: never
+  security:
+    user:
+      name: todor
+      password: todor
+      roles: ADMIN, MODERATOR
 
-      #logging:
-      #level:
-      #org.hibernate.SQLQuery: TRACE
-      #org.hibernate.type.descriptor: TRACE
-      #Cloudinary Properties
-      #cloudinary:
-      #api-key:
-      #api-secret:
-      #cloud-name:
+logging:
+  level:
+    org.springframework.security: DEBUG
+    #org.hibernate.SQLQuery: TRACE
+    #org.hibernate.type.descriptor: TRACE
+    #Cloudinary Properties
+    #cloudinary:
+    #api-key:
+  #api-secret:
+  #cloud-name:
 
 app:
   default:
