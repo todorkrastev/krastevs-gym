@@ -1,13 +1,16 @@
 package com.todorkrastev.gym.controller;
 
-import com.todorkrastev.gym.entity.Role;
-import com.todorkrastev.gym.entity.User;
-import com.todorkrastev.gym.payload.JWTAuthResponse;
-import com.todorkrastev.gym.payload.LoginDto;
-import com.todorkrastev.gym.payload.SignUpDto;
+import com.todorkrastev.gym.model.dto.JWTAuthResponse;
+import com.todorkrastev.gym.model.dto.LoginDTO;
+import com.todorkrastev.gym.model.dto.RegisterDTO;
+import com.todorkrastev.gym.model.entity.Role;
+import com.todorkrastev.gym.model.entity.User;
+import com.todorkrastev.gym.model.entity.enums.RoleCategoryName;
 import com.todorkrastev.gym.repository.RoleRepository;
 import com.todorkrastev.gym.repository.UserRepository;
 import com.todorkrastev.gym.security.JwtTokenProvider;
+import com.todorkrastev.gym.service.RoleService;
+import com.todorkrastev.gym.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,58 +30,61 @@ import java.util.Collections;
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
+    private final UserService userService;
+    private final RoleService roleService;
+    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider tokenProvider;
 
-    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, JwtTokenProvider tokenProvider) {
+    public AuthController(AuthenticationManager authenticationManager, UserService userService, RoleService roleService, PasswordEncoder passwordEncoder, UserRepository userRepository, RoleRepository roleRepository, JwtTokenProvider tokenProvider) {
         this.authenticationManager = authenticationManager;
+        this.userService = userService;
+        this.roleService = roleService;
+        this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        this.passwordEncoder = passwordEncoder;
         this.tokenProvider = tokenProvider;
     }
 
-    @PostMapping("/signin")
-    public ResponseEntity<JWTAuthResponse> authenticateUser(@RequestBody LoginDto loginDto) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                loginDto.getUsernameOrEmail(), loginDto.getPassword()));
+    @PostMapping("/login")
+    public ResponseEntity<JWTAuthResponse> authenticateUser(@RequestBody LoginDTO loginDTO) {
+        Authentication authentication = this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                loginDTO.getUsernameOrEmail(), loginDTO.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         // get token from tokenProvider
-        String token = tokenProvider.generateToken(authentication);
+        String token = this.tokenProvider.generateToken(authentication);
 
         return ResponseEntity.ok(new JWTAuthResponse(token));
     }
 
-    @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@RequestBody SignUpDto signUpDto) {
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody RegisterDTO registerDTO) {
+
 
         // add check for username exists in a DB
-        if (userRepository.existsByUsername(signUpDto.getUsername())) {
+        if (this.userRepository.existsByUsername(registerDTO.getUsername())) {
             return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
         }
 
         // add check for email exists in DB
-        if (userRepository.existsByEmail(signUpDto.getEmail())) {
+        if (this.userRepository.existsByEmail(registerDTO.getEmail())) {
             return new ResponseEntity<>("Email is already taken!", HttpStatus.BAD_REQUEST);
         }
 
         // create user object
         User user = new User();
-        user.setName(signUpDto.getName());
-        user.setUsername(signUpDto.getUsername());
-        user.setEmail(signUpDto.getEmail());
-        user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
+        user.setUsername(registerDTO.getUsername());
+        user.setEmail(registerDTO.getEmail());
+        user.setPassword(this.passwordEncoder.encode(registerDTO.getPassword()));
 
-        Role roles = roleRepository.findByName("ROLE_ADMIN").get();
+        Role roles = this.roleRepository.findByRole(RoleCategoryName.USER).get();
         user.setRoles(Collections.singleton(roles));
 
-        userRepository.save(user);
+        this.userRepository.save(user);
 
         return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
-
     }
 }

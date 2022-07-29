@@ -1,17 +1,17 @@
 package com.todorkrastev.gym.service;
 
-import com.todorkrastev.gym.payload.CommentDto;
+import com.todorkrastev.gym.model.dto.CommentDTO;
 
 import java.util.List;
 
 public interface CommentService {
-    CommentDto createComment(long postId, CommentDto commentDto);
+    CommentDTO createComment(Long postId, CommentDTO commentDTO);
 
-    List<CommentDto> getCommentsByPostId(long postId);
+    List<CommentDTO> getCommentsByPostId(Long postId);
 
-    CommentDto getCommentById(Long postId, Long commentId);
+    CommentDTO getCommentById(Long postId, Long commentId);
 
-    CommentDto updateComment(Long postId, long commentId, CommentDto commentRequest);
+    CommentDTO updateComment(Long postId, Long commentId, CommentDTO commentRequest);
 
     void deleteComment(Long postId, Long commentId);
 }
