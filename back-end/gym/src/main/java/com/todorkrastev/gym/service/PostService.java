@@ -1,19 +1,16 @@
 package com.todorkrastev.gym.service;
 
-import com.todorkrastev.gym.model.dto.PostDTO;
-import com.todorkrastev.gym.model.dto.PostResponseDTO;
-import com.todorkrastev.gym.model.entity.Post;
+import com.todorkrastev.gym.payload.PostDto;
+import com.todorkrastev.gym.payload.PostResponse;
 
 public interface PostService {
-    PostDTO createPost(PostDTO postDto);
+    PostDto createPost(PostDto postDto);
 
-    PostResponseDTO getAllPosts(int pageNum, int pageSize, String sortBy, String sortDir);
+    PostResponse getAllPosts(int pageNo, int pageSize, String sortBy, String sortDir);
 
-    PostDTO getPostById(Long id);
+    PostDto getPostById(long id);
 
-    PostDTO updatePost(PostDTO postDTO, Long id);
+    PostDto updatePost(PostDto postDto, long id);
 
-    void deletePostById(Long id);
-
-    Post findById(Long id);
+    void deletePostById(long id);
 }
