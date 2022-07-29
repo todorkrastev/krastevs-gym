@@ -2,7 +2,7 @@
 
 
 -- user roles
-INSERT INTO roles (id, role)
+INSERT INTO roles (id, name)
 VALUES (1, 'ADMIN'),
        (2, 'MODERATOR'),
        (3, 'USER');

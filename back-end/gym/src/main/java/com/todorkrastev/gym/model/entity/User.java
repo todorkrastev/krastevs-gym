@@ -12,12 +12,12 @@ public class User extends BaseEntity {
     private String password;
 
     private Set<Role> roles;
-    private Set<Product> products;
+    //private Set<Product> products;
 
 
     public User() {
         this.roles = new HashSet<>();
-        this.products = new HashSet<>();
+        //this.products = new HashSet<>();
     }
 
 
@@ -51,7 +51,7 @@ public class User extends BaseEntity {
         return this;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     public Set<Role> getRoles() {
         return roles;
     }
@@ -61,12 +61,12 @@ public class User extends BaseEntity {
         return this;
     }
 
-    @ManyToMany
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
+//    @ManyToMany
+//    public Set<Product> getProducts() {
+//        return products;
+//    }
+//
+//    public void setProducts(Set<Product> products) {
+//        this.products = products;
+//    }
 }

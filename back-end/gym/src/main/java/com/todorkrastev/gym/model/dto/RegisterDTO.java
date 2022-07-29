@@ -5,7 +5,6 @@ public class RegisterDTO {
     private String username;
     private String email;
     private String password;
-    private String repeatPassword;
 
     public RegisterDTO() {
     }
@@ -32,13 +31,5 @@ public class RegisterDTO {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getRepeatPassword() {
-        return repeatPassword;
-    }
-
-    public void setRepeatPassword(String repeatPassword) {
-        this.repeatPassword = repeatPassword;
     }
 }
