@@ -1,15 +1,18 @@
 package com.todorkrastev.gym.service.impl;
 
+import com.todorkrastev.gym.model.dto.RegisterDTO;
 import com.todorkrastev.gym.model.entity.Role;
 import com.todorkrastev.gym.model.entity.User;
 import com.todorkrastev.gym.model.entity.enums.RoleCategoryName;
 import com.todorkrastev.gym.repository.RoleRepository;
 import com.todorkrastev.gym.repository.UserRepository;
 import com.todorkrastev.gym.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
 
@@ -18,6 +21,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final ModelMapper modelMapper;
     private final String adminPass;
     private final String moderatorPass;
     private final String userPass;
@@ -26,12 +30,13 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserRepository userRepository,
                            RoleRepository roleRepository,
                            PasswordEncoder passwordEncoder,
-                           @Value("${app.default.admin.password}") String adminPass,
+                           ModelMapper modelMapper, @Value("${app.default.admin.password}") String adminPass,
                            @Value("${app.default.moderator.password}") String moderatorPass,
                            @Value("${app.default.user.password}") String userPass) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.modelMapper = modelMapper;
         this.adminPass = adminPass;
         this.moderatorPass = moderatorPass;
         this.userPass = userPass;
@@ -40,12 +45,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean existsByUsername(String username) {
-        return false;
+        return this.userRepository.
+                existsByUsername(username);
     }
 
     @Override
     public boolean existsByEmail(String email) {
-        return false;
+        return this.userRepository
+                .existsByEmail(email);
     }
 
     @Override
@@ -55,6 +62,7 @@ public class UserServiceImpl implements UserService {
             Optional<Role> getAdminByRole = this.roleRepository.findByRole(RoleCategoryName.ADMIN);
             Optional<Role> getModeratorRole = this.roleRepository.findByRole(RoleCategoryName.MODERATOR);
             Optional<Role> getUserRole = this.roleRepository.findByRole(RoleCategoryName.USER);
+
 
             if (getAdminByRole.isPresent() && getModeratorRole.isPresent() && getUserRole.isPresent()) {
                 Role admin = getAdminByRole.get();
@@ -66,6 +74,20 @@ public class UserServiceImpl implements UserService {
                 initUser(Set.of(user));
             }
         }
+    }
+
+    @Override
+    public void registerUser(RegisterDTO registerDTO) {
+        User newUser = this.modelMapper.map(registerDTO, User.class);
+
+        Optional<Role> getUserRole = this.roleRepository.findByRole(RoleCategoryName.USER);
+
+        if (getUserRole.isPresent()) {
+            Role roles = getUserRole.get();
+            newUser.setRoles(Collections.singleton(roles));
+        }
+
+        this.userRepository.save(newUser);
     }
 
     private void initAdmin(Set<Role> roles) {
