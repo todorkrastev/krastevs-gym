@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -32,7 +34,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<JWTAuthResponse> authenticateUser(@RequestBody LoginDTO loginDTO) {
+    public ResponseEntity<JWTAuthResponse> authenticateUser(@Valid @RequestBody LoginDTO loginDTO) {
         Authentication authentication = this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDTO.getUsernameOrEmail(), loginDTO.getPassword()));
 
@@ -44,7 +46,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody RegisterDTO registerDTO) {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterDTO registerDTO) {
 
         if (this.userService.existsByUsername(registerDTO.getUsername())) {
             return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
